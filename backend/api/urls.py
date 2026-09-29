@@ -1,0 +1,40 @@
+# Autori: Milica Tadić ([student ID omitted], SSU11-15), Boško Trifunović ([student ID omitted], SSU16-20)
+from django.urls import include, path
+
+from . import views
+
+urlpatterns = [
+    path("mobile/", include("api.mobile_urls")),
+    path("auth/login/", views.auth_login, name="auth-login"),
+    path("auth/me/", views.auth_me, name="auth-me"),
+    path("auth/logout/", views.auth_logout, name="auth-logout"),
+    path("waiter/", include("api.waiter_urls")),
+    path("owner/sidebar-summary/", views.owner_sidebar_summary, name="owner-sidebar-summary"),
+    path("analytics/dashboard/", views.analytics_dashboard, name="analytics-dashboard"),
+    path("analytics/summary/", views.analytics_summary, name="analytics-summary"),
+    path("analytics/revenue/", views.analytics_revenue, name="analytics-revenue"),
+    path("analytics/top-items/", views.analytics_top_items, name="analytics-top-items"),
+    path("analytics/occupancy/", views.analytics_occupancy, name="analytics-occupancy"),
+    path("analytics/staff/", views.analytics_staff, name="analytics-staff"),
+    path("analytics/goals/", views.analytics_goals_list, name="analytics-goals-list"),
+    path("analytics/goals/<str:goal_id>/", views.analytics_goal_detail, name="analytics-goal-detail"),
+    path("staff/", views.staff_list, name="staff-list"),
+    path("staff/<str:worker_id>/details/", views.staff_details, name="staff-details"),
+    path("staff/<str:worker_id>/shifts/", views.staff_shifts_list, name="staff-shifts-list"),
+    path("staff/<str:worker_id>/shifts/<str:shift_id>/", views.staff_shift_detail, name="staff-shift-detail"),
+    path("staff/<str:worker_id>/", views.staff_detail, name="staff-detail"),
+    path("staff/<str:worker_id>/activate/", views.staff_activate, name="staff-activate"),
+    path("staff/<str:worker_id>/deactivate/", views.staff_deactivate, name="staff-deactivate"),
+    path("staff-roles/", views.staff_roles_list, name="staff-roles-list"),
+    path("staff-roles/<str:role_key>/", views.staff_role_detail, name="staff-role-detail"),
+    path("menu-categories/", views.menu_categories_list, name="menu-categories-list"),
+    path("menu-categories/<str:category_id>/", views.menu_category_detail, name="menu-category-detail"),
+    path("menu-items/", views.menu_items_list, name="menu-items-list"),
+    path("menu-items/<str:item_id>/", views.menu_item_detail, name="menu-item-detail"),
+    path("venue-map/", views.venue_map_snapshot, name="venue-map-snapshot"),
+    path("venue-map/floor/", views.venue_floor_detail, name="venue-floor-detail"),
+    path("venue-sectors/", views.venue_sectors_list, name="venue-sectors-list"),
+    path("venue-sectors/<str:sector_id>/", views.venue_sector_detail, name="venue-sector-detail"),
+    path("venue-tables/", views.venue_tables_list, name="venue-tables-list"),
+    path("venue-tables/<str:table_id>/", views.venue_table_detail, name="venue-table-detail"),
+]

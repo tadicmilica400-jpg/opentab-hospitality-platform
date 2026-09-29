@@ -1,0 +1,43 @@
+# Autori: Ivana Mušikić ([student ID omitted], SSU1-5), Nina Kaljević ([student ID omitted], SSU6-10)
+from django.urls import path
+
+from . import mobile_auth_views, mobile_friend_views, mobile_group_views, mobile_menu_views, mobile_order_views, mobile_payment_views, mobile_profile_views, mobile_reservation_views, mobile_table_views
+
+urlpatterns = [
+    path("auth/register/", mobile_auth_views.mobile_auth_register, name="mobile-auth-register"),
+    path("auth/login/", mobile_auth_views.mobile_auth_login, name="mobile-auth-login"),
+    path("auth/guest/", mobile_auth_views.mobile_auth_continue_as_guest, name="mobile-auth-guest"),
+    path("auth/me/", mobile_auth_views.mobile_auth_me, name="mobile-auth-me"),
+    path("auth/logout/", mobile_auth_views.mobile_auth_logout, name="mobile-auth-logout"),
+    path("profile/", mobile_profile_views.mobile_profile_me, name="mobile-profile-me"),
+    path("profile/update/", mobile_profile_views.mobile_profile_update, name="mobile-profile-update"),
+    path("menu/", mobile_menu_views.mobile_menu_catalog, name="mobile-menu-catalog"),
+    path("menu/categories/", mobile_menu_views.mobile_menu_categories, name="mobile-menu-categories"),
+    path("menu/items/", mobile_menu_views.mobile_menu_items, name="mobile-menu-items"),
+    path("tables/scan/", mobile_table_views.mobile_table_scan, name="mobile-table-scan"),
+    path("tables/session/", mobile_table_views.mobile_table_session_me, name="mobile-table-session-me"),
+    path("tables/session/leave/", mobile_table_views.mobile_table_session_leave, name="mobile-table-session-leave"),
+    path("orders/", mobile_order_views.mobile_order_create, name="mobile-order-create"),
+    path("orders/active/", mobile_order_views.mobile_order_active, name="mobile-order-active"),
+    path("orders/<str:order_id>/", mobile_order_views.mobile_order_detail, name="mobile-order-detail"),
+    path("orders/<str:order_id>/status/", mobile_order_views.mobile_order_status, name="mobile-order-status"),
+    path("payments/bill/", mobile_payment_views.mobile_payment_bill, name="mobile-payment-bill"),
+    path("payments/", mobile_payment_views.mobile_payment_create, name="mobile-payment-create"),
+    path("payments/<str:payment_id>/", mobile_payment_views.mobile_payment_detail, name="mobile-payment-detail"),
+    path("reservations/defaults/", mobile_reservation_views.mobile_reservation_defaults, name="mobile-reservation-defaults"),
+    path("reservations/", mobile_reservation_views.mobile_reservations, name="mobile-reservations"),
+    path("reservations/<str:reservation_id>/", mobile_reservation_views.mobile_reservation_detail, name="mobile-reservation-detail"),
+    path("reservations/<str:reservation_id>/cancel/", mobile_reservation_views.mobile_reservation_cancel, name="mobile-reservation-cancel"),
+    path("groups/summary/", mobile_group_views.mobile_group_summary, name="mobile-group-summary"),
+    path("groups/", mobile_group_views.mobile_group_create, name="mobile-group-create"),
+    path("groups/invite/", mobile_group_views.mobile_group_invite, name="mobile-group-invite"),
+    path("groups/invites/<str:invite_id>/accept/", mobile_group_views.mobile_group_invite_accept, name="mobile-group-invite-accept"),
+    path("groups/invites/<str:invite_id>/decline/", mobile_group_views.mobile_group_invite_decline, name="mobile-group-invite-decline"),
+    path("groups/leave/", mobile_group_views.mobile_group_leave, name="mobile-group-leave"),
+    path("friends/summary/", mobile_friend_views.mobile_friends_summary, name="mobile-friends-summary"),
+    path("friends/search/", mobile_friend_views.mobile_friends_search, name="mobile-friends-search"),
+    path("friends/requests/", mobile_friend_views.mobile_friend_request_create, name="mobile-friend-request-create"),
+    path("friends/requests/<str:request_id>/accept/", mobile_friend_views.mobile_friend_request_accept, name="mobile-friend-request-accept"),
+    path("friends/requests/<str:request_id>/decline/", mobile_friend_views.mobile_friend_request_decline, name="mobile-friend-request-decline"),
+    path("friends/<str:friend_id>/", mobile_friend_views.mobile_friend_remove, name="mobile-friend-remove"),
+]
