@@ -1,0 +1,153 @@
+:root {
+  --owner-header-content-gap: clamp(34px, 3vw, 44px);
+}
+
+.app {
+  position: relative;
+  height: 100%;
+  display: flex;
+  gap: clamp(20px, 2.5vw, 28px);
+  overflow: hidden;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 24px);
+  overflow: hidden;
+}
+
+.page-layout {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-header {
+  position: relative;
+  z-index: 20;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  padding: clamp(16px, 2vw, 24px);
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  background: rgba(17, 16, 14, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.header-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.header-row-middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.map-title {
+  min-width: 0;
+}
+
+.map-title h1 {
+  color: var(--cream);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.map-title p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: clamp(11px, 1vw, 13px);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.map-canvas-container {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  padding: 20px;
+  overflow: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.1);
+  background: rgba(17, 16, 14, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 161, 91, 0.2) transparent;
+}
+
+.map-canvas-container::-webkit-scrollbar {
+  width: 2px;
+  height: 3px;
+}
+
+.map-canvas-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.map-canvas-container::-webkit-scrollbar-thumb {
+  background: rgba(197, 161, 91, 0.2);
+  border-radius: 10px;
+}
+
+.divider-elegant {
+  width: 90%;
+  height: 1px;
+  margin-left: 5%;
+  margin-right: 5%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(197, 161, 91, 0.06) 15%,
+    rgba(197, 161, 91, 0.3) 50%,
+    rgba(197, 161, 91, 0.06) 85%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 12px;
+  }
+
+  .app {
+    gap: 14px;
+  }
+
+  .header-row-top,
+  .header-row-middle {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .map-canvas-container {
+    padding: 16px;
+  }
+}

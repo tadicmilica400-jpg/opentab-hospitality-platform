@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+  background: radial-gradient(circle at 20% 30%, #14110D, #090806);
+  color: var(--cream);
+  font-family: "Jost", sans-serif;
+  padding: clamp(16px, 2.5vw, 24px);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+  display: block;
+}
+
+input,
+textarea {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(197, 161, 91, 0.28);
+  color: var(--cream);
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 161, 91, 0.25);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 161, 91, 0.5);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 161, 91, 0.25) transparent;
+}

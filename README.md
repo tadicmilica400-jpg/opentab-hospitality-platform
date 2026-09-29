@@ -1,173 +1,43 @@
 # OpenTab — Hospitality Management Platform
 
-A team project developed for Principles of Software Engineering (PSI).
+Team coursework for Principles of Software Engineering (PSI). OpenTab combines guest-facing features with waiter and venue-owner workflows using React, TypeScript, Vite, Django REST Framework and MySQL.
 
-OpenTab combines guest-facing features with waiter and venue-owner workflows using React, TypeScript, Django REST Framework and MySQL.
+## Features and structure
 
-## Technologies
+- `OpenTab/`: web frontend, including waiter and owner modules.
+- `app_fronted/frontend_ssu1-10.v2/`: separate guest/mobile-oriented frontend; retained as a distinct implementation, not assumed interchangeable with the web client.
+- `backend/`: Django API for authentication, menus, orders, reservations, groups, tables, payments and venue management.
+- `database/schema.sql`: schema without the original populated database dump.
 
-- React and TypeScript
-- Vite and Tailwind CSS
-- Python and Django REST Framework
-- MySQL
+## Team contribution
 
-## Features
+The project's author record assigns Milica Tadić the web frontend and backend for waiter workflows (SSU 11–15): login, orders, table transfer and payment collection. Other recorded contributors are Ivana Mušikić (guest auth/profile/friends/groups/table flows), Nina Kaljević (guest menu/orders/payments/reservations), and Boško Trifunović (owner menu/venue/staff/analytics). Shared infrastructure is not attributed to a single person. This is a team project, not a claim of sole authorship.
 
-- Guest authentication and profiles
-- Menus and orders
-- Reservations and table sessions
-- Friends and groups
-- Waiter order management, table transfers and payment collection
-- Venue-owner menu, staff and analytics modules
+## Local backend setup
 
-Some frontend modules contain mock data. This is a coursework application, not a production payment-processing service.
+Use a clean local MySQL instance and Python 3.12+ (the source settings identify Django 6). Dependencies listed in `backend/requirements.txt` are inferred from imports, not a reproduced environment lock.
 
-## My Contribution
+1. Install dependencies with `python -m pip install -r backend/requirements.txt` in your virtual environment.
+2. Review and import `database/schema.sql` into a disposable local database using MySQL. The script creates and selects `opentab`. It is intended for an empty database, not repeatable migrations against an existing one.
+3. Create a dedicated local database user with access to that database. Set the environment variables shown below in the terminal that will run Django.
+4. From `backend/`, run `python manage.py check`, `python manage.py migrate`, then `python manage.py runserver 127.0.0.1:8000`.
 
-According to the project's contribution record, my work covered the web frontend and backend for the waiter module (SSU 11–15), including:
-
-- Waiter login
-- Order management
-- Table transfers
-- Payment collection
-
-## Team
-
-| Contributor | Recorded area |
-| --- | --- |
-| Milica Tadić | Waiter web frontend and backend |
-| Ivana Mušikić | Guest authentication, profiles, friends, groups and table flows |
-| Nina Kaljević | Guest menus, orders, payments and reservations |
-| Boško Trifunović | Owner menus, venue management, staff and analytics |
-
-Shared infrastructure is a team contribution and is not assigned to a single author.
-
-## Project Structure
-
-```text
-OpenTab/
-    Web frontend for waiter and owner workflows
-
-app_fronted/frontend_ssu1-10.v2/
-    Separate guest/mobile-oriented frontend
-
-backend/
-    Django application and API
-
-database/
-    schema.sql
-```
-
-The two frontend directories are separate implementations and should be installed and run independently.
-
-## Backend Setup
-
-### Prerequisites
-
-- Python 3.12 or newer
-- A local MySQL instance
-- A Python virtual environment
-
-The source settings identify Django 6. Backend dependencies were inferred from imports; they are not a fully verified environment lock.
-
-### 1. Install dependencies
-
-From the repository root, with your virtual environment active:
-
-```bash
-python -m pip install -r backend/requirements.txt
-```
-
-### 2. Prepare the database
-
-Review and import `database/schema.sql` into a clean local MySQL instance.
-
-The script creates and selects a database named `opentab`. It is intended for an empty database and should not be treated as a repeatable migration script.
-
-Create a dedicated database user with access to this database.
-
-Application models use `managed = False`, so Django migrations do not create the OpenTab domain tables. The SQL import is required.
-
-### 3. Configure environment variables
-
-Set these variables in the PowerShell terminal that will run Django. Replace the example values with your own:
+PowerShell configuration example:
 
 ```powershell
-$env:DJANGO_SECRET_KEY = 'REPLACE_WITH_A_NEW_RANDOM_KEY'
-$env:DB_PASSWORD = 'REPLACE_WITH_YOUR_LOCAL_DATABASE_PASSWORD'
+$env:DJANGO_SECRET_KEY = '<generate a new random local key>'
+$env:DB_PASSWORD = '<your local database password>'
 $env:DB_USER = 'opentab'
 $env:DB_NAME = 'opentab'
 $env:DJANGO_DEBUG = 'true'
 ```
 
-Generate a random key with:
+Generate a key with `python -c "import secrets; print(secrets.token_urlsafe(50))"`. No `.env` loader is configured: set these variables in the process environment. Optional variables are `DB_HOST`, `DB_PORT`, `DJANGO_ALLOWED_HOSTS` and `CORS_ALLOWED_ORIGINS`. Defaults restrict hosts/origins to local development addresses. Application models use `managed = False`, so Django migrations do **not** create the OpenTab domain tables: the SQL import is required. Django migrations handle Django's own tables.
 
-```bash
-python -c "import secrets; print(secrets.token_urlsafe(50))"
-```
+## Frontend setup
 
-Additional configuration variables:
+In `OpenTab/`, run `npm ci`, then `npm run dev`. The Vite development proxy forwards `/api` to `http://127.0.0.1:8000`; the web UI uses port 5173. Use a Node version compatible with the committed Vite dependency. `npm run build` and `npm run lint` provide build and static checks. The separate guest frontend has its own `package.json` and lockfile; install and run it independently, stopping the other frontend if their ports conflict.
 
-- `DB_HOST`
-- `DB_PORT`
-- `DJANGO_ALLOWED_HOSTS`
-- `CORS_ALLOWED_ORIGINS`
+## Verification and limitations
 
-Host and origin defaults are restricted to local development addresses.
-
-No `.env` loader is configured. Variables must be set in the process environment.
-
-### 4. Start the backend
-
-```bash
-cd backend
-python manage.py check
-python manage.py migrate
-python manage.py runserver 127.0.0.1:8000
-```
-
-Django migrations create Django's own tables; OpenTab domain tables come from the SQL schema.
-
-## Frontend Setup
-
-From the repository root:
-
-```bash
-cd OpenTab
-npm ci
-npm run dev
-```
-
-Use a Node.js version compatible with the Vite dependency in the committed package files.
-
-The web interface uses port `5173`. The development proxy forwards `/api` requests to `http://127.0.0.1:8000`.
-
-### Build and lint
-
-```bash
-npm run build
-npm run lint
-```
-
-The guest frontend has its own package files under `app_fronted/frontend_ssu1-10.v2/`. Install and run it separately. Stop the other frontend first if their ports conflict.
-
-## Data and Configuration
-
-The repository excludes:
-
-- The original populated database dump
-- Local database credentials and Django secret keys
-- The bundled Python virtual environment
-- Original Git history and local IDE files
-
-No ready-to-use demo accounts are included. Configure your own local database and development accounts.
-
-## Verification Status
-
-- Python source files passed syntax parsing during portfolio preparation.
-- Full backend tests, frontend builds and database integration have not been verified for this package.
-- Backend test files are included, but unmanaged models require an appropriately prepared test database.
-
-## Attribution
-
-This is joint university coursework. Contributions are documented above; the repository does not claim sole authorship.
+Python files passed syntax parsing during portfolio preparation. Full backend tests, frontend builds and database integration have not been executed for this package. Existing backend test files are retained, but unmanaged tables require an appropriately prepared test database. The populated SQL dump, accounts, sessions and local secrets are deliberately not distributed; no ready-to-use demo accounts are promised. Some frontend modules contain mock data. This is a coursework portfolio, not a production-ready deployment or payment-processing service. Confirm team agreement before public publication.

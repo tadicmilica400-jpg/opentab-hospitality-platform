@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./sidebar.css";
+
+@import "./ui.css";
+@import "./forms.css";
+@import "./modals.css";
+
+@import "./owner-menu.css";
+@import "./owner-staff.css";
+@import "./owner-staff-details.css";
+@import "./owner-venue-map.css";
+@import "./owner-analytics.css";
+
+@import "./waiter.css";

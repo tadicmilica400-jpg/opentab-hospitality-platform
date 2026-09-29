@@ -1,0 +1,42 @@
+:root {
+  --bg-deep: #0C0A08;
+  --bg-panel: #11100E;
+  --cream: #EDE6D8;
+  --gold: #C5A15B;
+  --gold-dim: #9E7E48;
+  --muted: #8A7A68;
+  --danger: #C8846A;
+  --success: #70B47A;
+
+  --radius-card: clamp(20px, 2.5vw, 28px);
+  --radius-item: clamp(10px, 1.2vw, 14px);
+
+  --sidebar-width: clamp(270px, 23vw, 320px);
+  --pad-x: clamp(18px, 2vw, 24px);
+
+  --glass-panel: rgba(17, 16, 14, 0.5);
+  --glass-panel-strong: rgba(17, 16, 14, 0.86);
+  --glass-border: rgba(197, 161, 91, 0.12);
+  --glass-border-strong: rgba(197, 161, 91, 0.18);
+
+  --text-main: rgba(255, 255, 255, 0.92);
+  --text-soft: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.45);
+
+  --shadow-card: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
+
+  /* Live/real-time accent used across waiter screens (order timers, approvals,
+     "uzivo" status, checkout success). Brighter than --success so it reads
+     clearly against dense glass cards. Kept as a token instead of being
+     hardcoded per-file so waiter and owner stay one design system. */
+  --success-live: #78F0BD;
+  --success-live-rgb: 0, 208, 132;
+
+  /* Reserved-table status accent (waiter table map / transfer / checkout legend). */
+  --info: #66AAFF;
+  --info-rgb: 102, 170, 255;
+
+  /* Partial-approval status accent (order partially approved). */
+  --partial-gold: #D9BD78;
+}

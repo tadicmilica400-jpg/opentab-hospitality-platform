@@ -1,0 +1,6138 @@
+/* Autori: Milica Tadić ([student ID omitted], SSU11-15), Boško Trifunović ([student ID omitted], SSU20) */
+.waiter-login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: var(--bg);
+}
+
+.waiter-login-card {
+  width: min(460px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 42px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.18);
+  background: rgba(17, 16, 14, 0.76);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.48);
+}
+
+.waiter-login-brand,
+.manual-header-left h1,
+.orders-title h1,
+.move-title h1,
+.close-title h1 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.waiter-login-brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.waiter-login-brand span,
+.waiter-login-card h1 {
+  color: var(--gold);
+}
+
+.waiter-login-card h1 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+
+.waiter-login-card p,
+.waiter-inline-error {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.waiter-login-fields {
+  display: grid;
+  gap: 12px;
+}
+
+.waiter-login-fields input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(197, 161, 91, 0.14);
+  color: var(--cream);
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.waiter-inline-error {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(200, 90, 70, 0.28);
+  background: rgba(200, 90, 70, 0.08);
+  color: #e07060;
+  font-size: 13px;
+}
+
+.waiter-map-layout .venue-map-canvas {
+  cursor: grab;
+}
+
+.waiter-table-status-free .venue-table {
+  border-color: rgba(112, 180, 122, 0.52);
+  background: radial-gradient(circle at 30% 30%, #1c2a1d, #121a13);
+}
+
+.waiter-table-status-reserved .venue-table {
+  border-color: rgba(122, 171, 204, 0.46);
+  background: radial-gradient(circle at 30% 30%, #1a2230, #111820);
+}
+
+.waiter-table-status-payment .venue-table {
+  border-color: rgba(220, 160, 60, 0.68);
+  background: radial-gradient(circle at 30% 30%, #2a2010, #1a1508);
+  box-shadow: 0 0 0 2px rgba(220, 160, 60, 0.12), 0 0 18px rgba(220, 160, 60, 0.18);
+}
+
+.waiter-table-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.waiter-table-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.waiter-table-summary strong,
+.waiter-table-summary span {
+  display: block;
+}
+
+.waiter-table-summary span {
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+.waiter-action-tile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(197, 161, 91, 0.16);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--cream);
+  cursor: pointer;
+  text-align: left;
+}
+
+.waiter-action-tile:hover {
+  border-color: rgba(197, 161, 91, 0.38);
+  color: var(--gold);
+}
+
+.waiter-orders-page,
+.manual-order-page,
+.waiter-flow-page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.orders-header,
+.manual-header,
+.move-header,
+.close-header {
+  background: rgba(17, 16, 14, 0.5);
+  backdrop-filter: blur(24px);
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  padding: clamp(16px, 2vw, 24px);
+  flex-shrink: 0;
+}
+
+.orders-header-top,
+.manual-header,
+.move-header-top,
+.close-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.orders-title h1,
+.manual-header-left h1,
+.move-title h1,
+.close-title h1 {
+  font-size: clamp(20px, 2.3vw, 26px);
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.orders-title p,
+.manual-header-left p,
+.move-title p,
+.close-title p {
+  color: var(--muted);
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.orders-live-badge,
+.order-timer,
+.order-status-badge,
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.orders-live-badge {
+  padding: 6px 12px;
+  color: #70b47a;
+  background: rgba(112, 180, 122, 0.1);
+  border: 1px solid rgba(112, 180, 122, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #70b47a;
+}
+
+.orders-tabs {
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  margin-top: 18px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.orders-tab,
+.cat-tab,
+.manual-table-pill {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.orders-tab {
+  padding: 8px 18px;
+}
+
+.orders-tab.active,
+.cat-tab.active,
+.manual-table-pill.active {
+  background: rgba(197, 161, 91, 0.14);
+  border-color: rgba(197, 161, 91, 0.42);
+  color: var(--gold);
+}
+
+.tab-count {
+  padding: 1px 7px;
+  background: rgba(197, 161, 91, 0.2);
+  color: var(--gold);
+}
+
+.orders-content,
+.step-table {
+  flex: 1;
+  overflow-y: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.1);
+  background: rgba(17, 16, 14, 0.35);
+  padding: 20px;
+}
+
+.sort-bar,
+.multi-counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.multi-counter-bar {
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.multi-counter-fill,
+.split-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+}
+
+.order-card,
+.archive-card {
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  background: rgba(17, 16, 14, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.order-card::before,
+.archive-card::before,
+.cart-panel::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(197, 161, 91, 0.5), transparent);
+}
+
+.order-card.urgent {
+  border-color: rgba(200, 132, 106, 0.3);
+}
+
+.order-card.very-urgent {
+  border-color: rgba(200, 90, 70, 0.45);
+}
+
+.card-header,
+.archive-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px 12px;
+}
+
+.archive-info {
+  min-height: 44px;
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-badge,
+.archive-table-badge,
+.panel-table-badge {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(197, 161, 91, 0.55);
+  color: var(--gold);
+  background: radial-gradient(circle at 30% 30%, #3a2e24, #1f1a15);
+  font-weight: 700;
+}
+
+.card-guest-name,
+.item-name,
+.archive-guest,
+.panel-table-name {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.archive-guest {
+  display: flex;
+  align-items: center;
+  min-height: 20px;
+  line-height: 1.2;
+}
+
+.card-guest-meta,
+.item-options,
+.item-note,
+.archive-meta {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.card-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.order-timer {
+  padding: 5px 11px;
+}
+
+.order-timer.normal,
+.order-status-badge.approved,
+.ov-guest-status.paid {
+  color: #70b47a;
+  background: rgba(112, 180, 122, 0.12);
+  border: 1px solid rgba(112, 180, 122, 0.25);
+}
+
+.order-timer.warning,
+.order-status-badge.pending {
+  color: var(--gold);
+  background: rgba(197, 161, 91, 0.12);
+  border: 1px solid rgba(197, 161, 91, 0.25);
+}
+
+.order-timer.danger,
+.order-status-badge.rejected,
+.ov-guest-status.unpaid {
+  color: #e07060;
+  background: rgba(200, 90, 70, 0.14);
+  border: 1px solid rgba(200, 90, 70, 0.28);
+}
+
+.order-status-badge.partial {
+  color: #7aabcc;
+  background: rgba(100, 140, 200, 0.12);
+  border: 1px solid rgba(100, 140, 200, 0.25);
+}
+
+.card-divider,
+.panel-divider,
+.cart-divider {
+  height: 1px;
+  margin: 0 20px;
+  background: linear-gradient(90deg, transparent, rgba(197, 161, 91, 0.15), transparent);
+}
+
+.card-items {
+  padding: 12px 20px;
+}
+
+.item-row,
+.ov-order-row,
+.partial-order-row,
+.split-order-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.item-qty,
+.ov-qty {
+  min-width: 28px;
+  padding: 4px 6px;
+  border-radius: 7px;
+  color: var(--gold);
+  background: rgba(197, 161, 91, 0.12);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.item-info,
+.ov-oname {
+  flex: 1;
+}
+
+.card-actions,
+.reject-actions,
+.partial-confirm-actions,
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.card-actions {
+  padding: 12px 20px 16px;
+}
+
+.btn-action,
+.btn-confirm-sm,
+.btn-cancel-sm,
+.panel-btn-primary,
+.panel-btn-secondary,
+.panel-btn-partial,
+.panel-btn-move,
+.panel-btn-release,
+.split-pay-btn {
+  border-radius: 12px;
+  border: 1px solid rgba(197, 161, 91, 0.28);
+  background: rgba(197, 161, 91, 0.09);
+  color: var(--gold);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 11px 16px;
+}
+
+.btn-approve,
+.btn-confirm-approve,
+.panel-btn-release {
+  color: #70b47a;
+  border-color: rgba(112, 180, 122, 0.45);
+  background: rgba(112, 180, 122, 0.12);
+}
+
+.btn-reject,
+.btn-confirm-reject {
+  color: #e07060;
+  border-color: rgba(200, 90, 70, 0.35);
+  background: rgba(200, 90, 70, 0.1);
+}
+
+.reject-panel,
+.partial-panel {
+  display: none;
+  padding: 0 20px 16px;
+}
+
+.reject-panel.visible,
+.partial-panel.visible {
+  display: block;
+}
+
+.reject-panel label,
+.partial-header,
+.panel-section-label,
+.cart-title,
+.split-progress-label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reject-panel textarea,
+.partial-note-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(197, 161, 91, 0.16);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--cream);
+  padding: 11px 14px;
+}
+
+.reject-panel textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.item-check-btn,
+.oci-cb {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+}
+
+.item-check-btn {
+  min-width: 34px;
+  height: 30px;
+}
+
+.item-check-btn.approved,
+.oci-cb:checked {
+  color: #70b47a;
+  border-color: rgba(112, 180, 122, 0.48);
+  background: rgba(112, 180, 122, 0.18);
+}
+
+.item-check-btn.rejected-item {
+  color: #e07060;
+  border-color: rgba(200, 90, 70, 0.4);
+  background: rgba(200, 90, 70, 0.12);
+}
+
+.empty-state {
+  display: none;
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+.empty-title {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 20px;
+}
+
+.manual-header-right,
+.category-tabs,
+.manual-table-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.manual-table-strip {
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(197, 161, 91, 0.1);
+  background: rgba(17, 16, 14, 0.35);
+}
+
+.manual-table-pill {
+  padding: 7px 12px;
+}
+
+.manual-table-pill.free {
+  border-color: rgba(112, 180, 122, 0.22);
+}
+
+.manual-table-pill.payment {
+  border-color: rgba(220, 160, 60, 0.32);
+}
+
+.step-menu,
+.main-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+}
+
+.menu-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-panel-card,
+.cart-panel {
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.1);
+  background: rgba(17, 16, 14, 0.5);
+  overflow: hidden;
+}
+
+.menu-search-wrap,
+.category-tabs-wrap {
+  padding: 14px 16px 0;
+}
+
+.category-tabs-wrap {
+  overflow-x: auto;
+}
+
+.cat-tab {
+  padding: 7px 16px;
+}
+
+.menu-items-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.manual-order-page .menu-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  padding: 14px 16px 16px;
+}
+
+.manual-order-page .menu-item-card {
+  display: block;
+  width: 100%;
+  min-height: 128px;
+  border-radius: var(--radius-item);
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  background: linear-gradient(135deg, rgba(30, 25, 20, 0.7), rgba(20, 17, 13, 0.85));
+  color: inherit;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.manual-order-page .menu-item-card.in-cart {
+  border-color: rgba(112, 180, 122, 0.35);
+  background: linear-gradient(135deg, rgba(30, 45, 30, 0.7), rgba(20, 30, 20, 0.85));
+}
+
+.manual-order-page .menu-item-desc {
+  min-height: 34px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 6px 0 10px;
+}
+
+.manual-order-page .menu-item-footer,
+.cart-header,
+.cart-total-row,
+.panel-total-row,
+.split-guest-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.manual-order-page .menu-item-price,
+.cart-item-price,
+.panel-total-amount,
+.amount-value {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.manual-order-page .menu-item-add-btn {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  color: var(--gold);
+  border: 1px solid rgba(197, 161, 91, 0.3);
+  background: rgba(197, 161, 91, 0.14);
+}
+
+.cart-panel {
+  width: clamp(260px, 28vw, 330px);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header,
+.cart-footer {
+  padding: 14px 18px;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px;
+}
+
+.cart-empty {
+  padding: 40px 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.cart-item {
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cart-item-name {
+  border: none;
+  background: none;
+  color: var(--cream);
+  text-align: left;
+  cursor: pointer;
+}
+
+.cart-item-note-preview {
+  margin-top: 4px;
+  color: #a59274;
+  font-size: 11px;
+}
+
+.cart-item-bottom,
+.qty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.qty-controls {
+  overflow: hidden;
+  gap: 0;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.qty-btn {
+  width: 28px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.qty-num {
+  min-width: 26px;
+  text-align: center;
+  color: var(--cream);
+}
+
+.btn-send-order,
+.btn-success-back {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(112, 180, 122, 0.45);
+  background: rgba(112, 180, 122, 0.14);
+  color: #70b47a;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.btn-send-order:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.success-box {
+  width: min(380px, 90vw);
+  padding: 38px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(112, 180, 122, 0.3);
+  background: rgba(18, 16, 14, 0.97);
+  text-align: center;
+}
+
+.success-title {
+  color: var(--cream);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.success-sub {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.info-panel {
+  width: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.32s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
+
+.info-panel.open {
+  width: 330px;
+}
+
+.info-panel > div:not(.info-panel-accent) {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 18px 22px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.18);
+  background: rgba(17, 16, 14, 0.86);
+}
+
+.info-panel-accent,
+.modal-accent-top {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.panel-table-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+}
+
+.panel-status-badge,
+.ov-guest-status {
+  margin-left: auto;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.badge-occ {
+  color: var(--gold);
+  background: rgba(197, 161, 91, 0.12);
+}
+
+.badge-wait {
+  color: #dca03c;
+  background: rgba(220, 160, 60, 0.12);
+}
+
+.panel-actions {
+  display: grid;
+  gap: 9px;
+}
+
+.panel-btn-primary,
+.panel-btn-secondary,
+.panel-btn-partial,
+.panel-btn-move,
+.panel-btn-release,
+.split-pay-btn {
+  width: 100%;
+  padding: 11px 14px;
+}
+
+.panel-warning {
+  display: flex;
+  gap: 9px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(200, 132, 106, 0.28);
+  background: rgba(200, 132, 106, 0.08);
+  color: #c88466;
+  font-size: 12px;
+}
+
+.step-wizard,
+.step-item {
+  display: flex;
+  align-items: center;
+}
+
+.step-item {
+  gap: 7px;
+}
+
+.step-circle {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.step-label {
+  color: rgba(255, 255, 255, 0.32);
+  font-size: 12px;
+}
+
+.step-item.active .step-circle,
+.step-item.active .step-label {
+  color: var(--gold);
+  border-color: rgba(197, 161, 91, 0.6);
+}
+
+.step-item.done .step-circle,
+.step-item.done .step-label {
+  color: #70b47a;
+  border-color: rgba(112, 180, 122, 0.45);
+}
+
+.step-connector {
+  width: 28px;
+  height: 1px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.step-connector.done {
+  background: rgba(112, 180, 122, 0.45);
+}
+
+.panel-partial-list,
+.panel-orders-list,
+.split-guest-list {
+  max-height: 280px;
+  overflow-y: auto;
+  margin-bottom: 14px;
+}
+
+.partial-guest-block,
+.split-guest-block {
+  margin-bottom: 12px;
+}
+
+.partial-guest-header,
+.ov-guest-name,
+.split-guest-name {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 600;
+}
+
+.partial-count-bar,
+.split-progress-wrap {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.confirm-transfer-row,
+.amount-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 14px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.confirm-table-block {
+  flex: 1;
+  text-align: center;
+}
+
+.confirm-table-num {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.confirm-table-block.dst .confirm-table-num {
+  color: #70b47a;
+}
+
+.confirm-table-sector,
+.confirm-question,
+.confirm-message {
+  color: var(--muted);
+}
+
+.split-progress-bar-bg {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(197, 161, 91, 0.24);
+  background: rgba(17, 16, 14, 0.96);
+  color: var(--cream);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 900px) {
+  .step-menu,
+  .main-body {
+    flex-direction: column;
+  }
+
+  .cart-panel,
+  .info-panel.open {
+    width: 100%;
+  }
+}
+
+.opentab-login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(24, 31, 38, 0.96), rgba(88, 58, 43, 0.9));
+  font-family: var(--font-body);
+}
+
+.opentab-login-panel {
+  width: min(1080px, 100%);
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.08fr);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 26px 72px rgba(0, 0, 0, 0.25);
+}
+
+.opentab-login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: 56px;
+}
+
+.opentab-login-brand {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: #26201c;
+}
+
+.opentab-login-brand span {
+  color: #b88746;
+}
+
+.opentab-login-copy h1 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 38px;
+  color: #231f1b;
+}
+
+.opentab-login-copy p {
+  margin: 0;
+  max-width: 390px;
+  color: #756c64;
+  line-height: 1.6;
+}
+
+.login-field {
+  display: grid;
+  gap: 8px;
+  color: #463d35;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-field input {
+  height: 48px;
+  border: 1px solid rgba(42, 35, 28, 0.14);
+  border-radius: 14px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.78);
+  font: inherit;
+  color: #251f1a;
+}
+
+.login-role-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.login-primary-btn,
+.login-secondary-btn {
+  min-height: 48px;
+  border-radius: 999px;
+  border: 1px solid #2b241e;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.login-primary-btn {
+  background: #2b241e;
+  color: #fffaf3;
+}
+
+.login-secondary-btn {
+  background: #fffaf3;
+  color: #2b241e;
+}
+
+.login-primary-btn.inverted {
+  background: #fffaf3;
+  color: #2b241e;
+}
+
+.login-secondary-btn.selected {
+  background: #2b241e;
+  color: #fffaf3;
+}
+
+.login-primary-btn:hover,
+.login-secondary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.opentab-login-image {
+  position: relative;
+  min-height: 650px;
+  background: #1f1b17;
+}
+
+.opentab-login-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.waiter-workspace-shell {
+  min-height: 0;
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.waiter-slide-panel {
+  display: block;
+}
+
+.waiter-slide-panel:not(.open) {
+  border-width: 0;
+  opacity: 0.4;
+}
+
+.waiter-table-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 12px 0 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.waiter-table-legend-title {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.waiter-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.waiter-legend-item i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.waiter-legend-item.free i { background: #70b47a; }
+.waiter-legend-item.occupied i { background: #c49652; }
+.waiter-legend-item.payment i { background: #d76f55; }
+.waiter-legend-item.reserved i { background: #8c7bc4; }
+
+.waiter-legend-item.pending b,
+.waiter-table-orders-badge {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  background: #d76f55;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.waiter-venue-table-wrapper.t-sel-from,
+.waiter-prototype-table.t-sel-from {
+  box-shadow: 0 0 0 3px rgba(196, 150, 82, 0.42), 0 16px 34px rgba(196, 150, 82, 0.24);
+}
+
+.waiter-venue-table-wrapper.t-sel-to,
+.waiter-prototype-table.t-sel-to {
+  box-shadow: 0 0 0 3px rgba(112, 180, 122, 0.5), 0 16px 34px rgba(112, 180, 122, 0.24);
+}
+
+.waiter-venue-table-wrapper.t-available .table-visual,
+.waiter-prototype-table.free:not(.action-disabled) .table-visual {
+  animation: waiterAvailablePulse 1.8s ease-in-out infinite;
+}
+
+.waiter-venue-table-wrapper.t-dimmed,
+.waiter-prototype-table.action-disabled {
+  opacity: 0.42;
+}
+
+@keyframes waiterAvailablePulse {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(112, 180, 122, 0)); }
+  50% { filter: drop-shadow(0 0 10px rgba(112, 180, 122, 0.55)); }
+}
+
+.waiter-prototype-picker-shell {
+  min-height: 520px;
+  overflow: auto;
+}
+
+.waiter-prototype-table-picker {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  padding: 18px;
+}
+
+.waiter-prototype-sector {
+  display: grid;
+  gap: 12px;
+}
+
+.waiter-prototype-sector-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.waiter-prototype-sector-label small {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.waiter-prototype-tables-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.waiter-prototype-table {
+  position: relative;
+  width: 118px;
+  min-height: 128px;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.64);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.waiter-prototype-table:hover {
+  transform: translateY(-2px);
+}
+
+.waiter-prototype-table.selected {
+  box-shadow: 0 0 0 3px rgba(196, 150, 82, 0.24);
+}
+
+.waiter-prototype-table-status {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.waiter-prototype-table .waiter-table-orders-badge,
+.waiter-venue-table-wrapper .waiter-table-orders-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.guest-transfer-list {
+  display: grid;
+  gap: 10px;
+}
+
+.waiter-transfer-guest-card {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.waiter-transfer-guest-card.checked {
+  border-color: rgba(112, 180, 122, 0.48);
+  background: rgba(112, 180, 122, 0.12);
+}
+
+.waiter-transfer-guest-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.waiter-transfer-guest-items {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.panel-btn-ghost {
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  cursor: pointer;
+}
+
+.waiter-report-page {
+  display: grid;
+  gap: 18px;
+}
+
+.waiter-report-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.waiter-report-card,
+.waiter-report-section {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.waiter-report-card span,
+.waiter-report-card small {
+  color: var(--color-text-muted);
+}
+
+.waiter-report-card strong {
+  display: block;
+  margin: 8px 0;
+  font-size: 30px;
+  color: var(--color-text);
+}
+
+.waiter-report-section h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.waiter-report-list {
+  display: grid;
+  gap: 10px;
+}
+
+.waiter-report-row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.waiter-report-row.muted {
+  grid-template-columns: 1fr;
+  color: var(--color-text-muted);
+}
+
+.waiter-report-row em {
+  color: #c49652;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .opentab-login-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .opentab-login-image {
+    min-height: 260px;
+  }
+
+  .waiter-workspace-shell {
+    flex-direction: column;
+  }
+
+  .waiter-report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .waiter-report-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* SSU14: legenda statusa je deo header-a, kao na mapi/premeštanju */
+.manual-header.manual-header-with-legend {
+  display: grid;
+  align-items: initial;
+  justify-content: initial;
+  gap: 14px;
+}
+
+.manual-header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.manual-header-legend-row {
+  justify-content: flex-start;
+  border-top: 1px solid rgba(197, 161, 91, 0.10);
+  padding-top: 12px;
+}
+
+.manual-header-legend-row .waiter-table-legend {
+  padding: 0;
+}
+
+/* SSU12: tabovi za Aktivni/Arhiva koriste fixed_v2 pill layout */
+.waiter-pending-hero {
+  display: grid;
+  gap: 18px;
+}
+
+.waiter-pending-hero .header-row-top {
+  margin-bottom: 0;
+}
+
+.waiter-pending-hero .status-pills,
+.waiter-pending-hero .segmented-slider {
+  justify-self: start;
+}
+
+.waiter-pending-tabs {
+  width: fit-content;
+}
+
+/* ============================================================
+   FINAL SSU / OWNER VISUAL SYNC
+   - dark login, owner background, static owner-like waiter map
+   - status colors match the header legend everywhere
+   ============================================================ */
+
+/* Login: match SSU / owner dark premium screen instead of the white interim variant. */
+.opentab-login-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 48px);
+  background: #1A1612;
+  font-family: "Jost", sans-serif;
+}
+
+.opentab-login-panel {
+  display: grid;
+  grid-template-columns: clamp(280px, 42%, 520px) 1fr;
+  width: 100%;
+  max-width: clamp(600px, 88vw, 1200px);
+  min-height: clamp(500px, 70vh, 720px);
+  overflow: hidden;
+  border-radius: clamp(16px, 1.8vw, 28px);
+  border: 1px solid #2E2620;
+  background: #16120E;
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.opentab-login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(20px, 3vh, 40px);
+  padding: clamp(28px, 4vw, 64px);
+  border-right: 1px solid #2A2218;
+  background: #16120E;
+  overflow-y: auto;
+}
+
+.opentab-login-brand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.opentab-login-brand span {
+  color: #B8975A;
+}
+
+.opentab-login-copy h1 {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 3.2vw, 48px);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+}
+
+.opentab-login-copy p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 1.6;
+}
+
+.login-field {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 500;
+}
+
+.login-field input {
+  height: clamp(44px, 4.5vw, 52px);
+  border: 1px solid #3A3028;
+  border-radius: clamp(8px, 1vw, 14px);
+  background: #211C16;
+  color: var(--cream);
+  padding: 0 15px;
+  outline: none;
+  font-family: "Jost", sans-serif;
+  font-size: clamp(12px, 0.9vw, 14px);
+}
+
+.login-field input:focus {
+  border-color: rgba(184, 151, 90, 0.72);
+  box-shadow: 0 0 0 3px rgba(184, 151, 90, 0.12);
+}
+
+.login-role-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.login-primary-btn,
+.login-secondary-btn {
+  min-height: clamp(44px, 4.5vw, 52px);
+  border-radius: 999px;
+  border: 1px solid rgba(184, 151, 90, 0.52);
+  font-family: "Jost", sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.login-primary-btn,
+.login-secondary-btn.selected {
+  background: linear-gradient(135deg, #B8975A, #8A6E3E);
+  color: #100D0A;
+  border-color: rgba(184, 151, 90, 0.76);
+}
+
+.login-secondary-btn {
+  background: rgba(184, 151, 90, 0.08);
+  color: var(--gold);
+  border-color: rgba(184, 151, 90, 0.28);
+}
+
+.login-primary-btn:hover,
+.login-secondary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.opentab-login-image {
+  position: relative;
+  min-height: clamp(500px, 70vh, 720px);
+  background: #100D0A;
+}
+
+.opentab-login-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(22, 18, 14, 0.28), transparent 38%), radial-gradient(circle at 70% 24%, rgba(184, 151, 90, 0.16), transparent 28%);
+  pointer-events: none;
+}
+
+.opentab-login-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Header typography: same title/body fonts on all waiter screens. */
+.map-header h1,
+.orders-title h1,
+.manual-header-left h1,
+.move-title h1,
+.close-title h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(20px, 2.3vw, 26px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+.map-header p,
+.orders-title p,
+.manual-header-left p,
+.move-title p,
+.close-title p,
+.step-label,
+.venue-map-stats span,
+.waiter-table-legend,
+.panel-status-badge {
+  font-family: "Jost", sans-serif;
+}
+
+.map-header p,
+.orders-title p,
+.manual-header-left p,
+.move-title p,
+.close-title p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: clamp(11px, 1vw, 13px);
+}
+
+/* One status legend style for map, transfer, checkout and manual-order headers. */
+.waiter-table-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid rgba(197, 161, 91, 0.10);
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1;
+}
+
+.waiter-table-legend-title {
+  color: rgba(237, 230, 216, 0.72);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.waiter-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.waiter-legend-item i {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.025);
+}
+
+.waiter-legend-item.occupied i { background: #C5A15B; }
+.waiter-legend-item.free i { background: #70B47A; }
+.waiter-legend-item.reserved i { background: #7AABCC; }
+.waiter-legend-item.payment i { background: #DCA03C; }
+
+.manual-header-legend-row .waiter-table-legend {
+  padding-top: 12px;
+}
+
+/* Waiter map uses the owner layout as a read-only viewport. */
+.waiter-map-layout .venue-map-canvas,
+.waiter-static-venue-map {
+  cursor: default;
+}
+
+.waiter-static-venue-map .zoom-badge,
+.waiter-static-venue-map .canvas-controls {
+  display: none !important;
+}
+
+.waiter-venue-map-canvas .venue-map-zoom-wrapper {
+  overflow: hidden;
+  cursor: grab;
+}
+
+.waiter-venue-map-canvas .venue-map-zoom-wrapper.panning {
+  cursor: grabbing;
+}
+
+.waiter-venue-map-canvas .venue-map-world {
+  width: 2000px;
+  height: 2000px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.waiter-venue-map-canvas .zoom-badge {
+  display: inline-flex !important;
+}
+
+.waiter-venue-map-canvas .waiter-canvas-controls {
+  display: inline-flex !important;
+}
+
+.waiter-workspace,
+.waiter-prototype-picker-shell,
+.orders-content,
+.step-table,
+.map-canvas-container {
+  background: rgba(17, 16, 14, 0.35);
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(60, 50, 40, 0.3) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, rgba(197, 161, 91, 0.02) 0px, rgba(197, 161, 91, 0.02) 2px, transparent 2px, transparent 8px);
+}
+
+.waiter-venue-table-wrapper {
+  cursor: pointer;
+}
+
+.waiter-venue-table-wrapper:active {
+  cursor: pointer;
+}
+
+/* Actual table colors on canvas must match legend. */
+.waiter-status-occupied .venue-table {
+  border-color: rgba(197, 161, 91, 0.72);
+  color: #F2D190;
+}
+
+.waiter-status-occupied .venue-table-round {
+  background: radial-gradient(circle at 30% 30%, #6E4426, #432715 68%, #2D190E 100%);
+}
+
+.waiter-status-occupied .venue-table-square,
+.waiter-status-occupied .venue-table-rectangle {
+  background: linear-gradient(145deg, #654126 0%, #422714 55%, #2D180D 100%);
+}
+
+.waiter-status-free .venue-table {
+  border-color: rgba(112, 180, 122, 0.58);
+  color: #9EDAA5;
+}
+
+.waiter-status-free .venue-table-round,
+.waiter-status-free .venue-table-square,
+.waiter-status-free .venue-table-rectangle {
+  background: radial-gradient(circle at 30% 30%, #1C2A1D, #121A13 70%, #0D120E 100%);
+}
+
+.waiter-status-reserved .venue-table {
+  border-color: rgba(122, 171, 204, 0.56);
+  color: #A8CFEA;
+}
+
+.waiter-status-reserved .venue-table-round,
+.waiter-status-reserved .venue-table-square,
+.waiter-status-reserved .venue-table-rectangle {
+  background: radial-gradient(circle at 30% 30%, #1A2230, #111820 70%, #0C1118 100%);
+}
+
+.waiter-status-payment .venue-table {
+  border-color: rgba(220, 160, 60, 0.68);
+  color: #F1C57A;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(220, 160, 60, 0.16), 0 10px 20px rgba(220, 160, 60, 0.14);
+}
+
+.waiter-status-payment .venue-table-round,
+.waiter-status-payment .venue-table-square,
+.waiter-status-payment .venue-table-rectangle {
+  background: radial-gradient(circle at 30% 30%, #2A2010, #1A1508 72%, #100D06 100%);
+}
+
+.waiter-status-free .venue-table-chair {
+  border-color: rgba(112, 180, 122, 0.42);
+  background: #1C2A1D;
+}
+
+.waiter-status-reserved .venue-table-chair {
+  border-color: rgba(122, 171, 204, 0.42);
+  background: #1A2230;
+}
+
+.waiter-status-payment .venue-table-chair {
+  border-color: rgba(220, 160, 60, 0.48);
+  background: #2A2010;
+}
+
+.waiter-venue-table-wrapper.selected .venue-table {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.42), 0 0 0 3px rgba(197, 161, 91, 0.24), 0 0 26px rgba(197, 161, 91, 0.28);
+}
+
+.waiter-venue-table-wrapper.t-dimmed {
+  opacity: 0.42;
+  filter: grayscale(0.25);
+}
+
+.waiter-venue-table-wrapper .venue-table-order-chip {
+  display: none;
+}
+
+/* The action side panel should not reserve visible space before a table is selected. */
+.waiter-slide-panel:not(.open) {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .opentab-login-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .opentab-login-image {
+    min-height: 260px;
+  }
+}
+
+/* ============================================================
+   FINAL CONSISTENCY PASS — font, header height, scroll islands,
+   login copied from supplied SSU login, owner-static table picker
+   ============================================================ */
+
+/* One source of truth for waiter typography. Body/control text uses Jost;
+   page titles and brand use Cormorant Garamond. */
+.app,
+.app-main,
+.waiter-layout,
+.waiter-orders-page,
+.manual-order-page,
+.waiter-flow-page,
+.waiter-map-layout,
+.info-panel,
+.info-panel *,
+.order-card,
+.order-card *,
+.archive-card,
+.archive-card *,
+.cart-panel,
+.cart-panel *,
+.menu-panel,
+.menu-panel *,
+.waiter-static-picker,
+.waiter-static-picker *,
+.modal-container,
+.modal-container *,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.sidebar__brand,
+.profile__avatar,
+.map-title h1,
+.orders-title h1,
+.manual-header-left h1,
+.move-title h1,
+.close-title h1,
+.opentab-login-brand,
+.opentab-login-copy h1,
+.badge-title,
+.table-badge,
+.archive-table-badge,
+.panel-table-badge,
+.venue-table {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+/* All waiter pages use the same vertical rhythm: fixed-height header +
+   one scrolling content island underneath, like SSU12 pending orders. */
+.waiter-layout,
+.waiter-orders-page,
+.manual-order-page,
+.waiter-flow-page,
+.waiter-map-layout.venue-map-layout {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.map-header,
+.orders-header,
+.manual-header,
+.move-header,
+.close-header {
+  min-height: 132px;
+  margin-bottom: 0 !important;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(17, 16, 14, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.12);
+  padding: clamp(16px, 2vw, 24px);
+}
+
+.header-row-top,
+.orders-header-top,
+.manual-header-main,
+.move-header-top,
+.close-header-top {
+  min-height: 42px;
+  margin-bottom: 0 !important;
+}
+
+.map-title h1,
+.orders-title h1,
+.manual-header-left h1,
+.move-title h1,
+.close-title h1 {
+  font-size: clamp(20px, 2.3vw, 26px) !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--cream) !important;
+}
+
+.map-title p,
+.orders-title p,
+.manual-header-left p,
+.move-title p,
+.close-title p {
+  font-size: clamp(11px, 1vw, 13px) !important;
+  line-height: 1.45 !important;
+  color: var(--muted) !important;
+}
+
+.waiter-workspace-shell,
+.step-menu,
+.orders-content,
+.step-table,
+.map-canvas-container.waiter-workspace,
+.waiter-prototype-picker-shell {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(197, 161, 91, 0.10);
+  background: rgba(17, 16, 14, 0.35);
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(60, 50, 40, 0.30) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, rgba(197, 161, 91, 0.02) 0px, rgba(197, 161, 91, 0.02) 2px, transparent 2px, transparent 8px);
+}
+
+.waiter-workspace-shell,
+.step-menu {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  background-image: none;
+}
+
+.map-canvas-container.waiter-workspace,
+.waiter-prototype-picker-shell,
+.orders-content,
+.step-table {
+  padding: 20px;
+}
+
+/* Manual order header: remove the two double separator lines around legend. */
+.manual-header-legend-row,
+.manual-header-legend-row .waiter-table-legend {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.manual-header.manual-header-with-legend {
+  gap: 10px;
+}
+
+/* Legend: identical everywhere. */
+.waiter-table-legend {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px 14px !important;
+  width: 100% !important;
+  color: var(--muted) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11.5px !important;
+  line-height: 1 !important;
+}
+
+.map-header > .waiter-table-legend,
+.move-header > .waiter-table-legend,
+.close-header > .waiter-table-legend,
+.orders-header > .waiter-table-legend {
+  border-top: 1px solid rgba(197, 161, 91, 0.10) !important;
+  padding-top: 12px !important;
+}
+
+.waiter-table-legend-title {
+  color: rgba(237, 230, 216, 0.72) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.waiter-legend-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+
+.waiter-legend-item i {
+  width: 9px !important;
+  height: 9px !important;
+  display: inline-block !important;
+  border-radius: 999px !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.025) !important;
+}
+
+.waiter-legend-item.occupied i { background: #C5A15B !important; }
+.waiter-legend-item.free i { background: #70B47A !important; }
+.waiter-legend-item.reserved i { background: #7AABCC !important; }
+.waiter-legend-item.payment i { background: #DCA03C !important; }
+
+/* Login copied structurally/stylistically from supplied opentab-login.html. */
+.page.opentab-login-page {
+  --login-page-padding: clamp(12px, 2.2vw, 32px);
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--login-page-padding);
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #1A1612 !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.page.opentab-login-page .card.opentab-login-card {
+  display: grid;
+  grid-template-columns: clamp(280px, 42%, 520px) 1fr;
+  width: 100%;
+  max-width: clamp(600px, 88vw, 1200px);
+  height: auto;
+  min-height: min(720px, calc(100dvh - var(--login-page-padding) - var(--login-page-padding)));
+  max-height: none;
+  overflow: hidden;
+  border: 1px solid #2E2620;
+  border-radius: clamp(16px, 1.8vw, 28px);
+  background: #16120E !important;
+  box-shadow: 0 32px 100px rgba(0, 0, 0, .65), 0 4px 16px rgba(0, 0, 0, .45);
+}
+
+.page.opentab-login-page .form-panel.opentab-login-form {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(14px, 2.2vh, 32px);
+  padding: clamp(20px, 4.5vh, 52px) clamp(28px, 4vw, 64px);
+  overflow: visible;
+  border-right: 1px solid #2A2218;
+  background: #16120E !important;
+}
+
+.page.opentab-login-page .brand.opentab-login-brand {
+  font-size: clamp(16px, 1.4vw, 22px) !important;
+  font-weight: 600 !important;
+  color: #EDE6D8 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+.page.opentab-login-page .brand.opentab-login-brand span { color: #B8975A !important; }
+
+.page.opentab-login-page .form-body.opentab-login-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.page.opentab-login-page .greeting {
+  margin-bottom: clamp(8px, 1vh, 14px);
+  color: #EDE6D8 !important;
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: clamp(28px, 3.2vw, 48px) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -.02em !important;
+}
+
+.page.opentab-login-page .greeting em {
+  color: #B8975A !important;
+  font-family: var(--font-accent, "Cormorant", serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+
+.page.opentab-login-page .subtitle {
+  max-width: 30ch;
+  margin-bottom: clamp(16px, 2.6vh, 32px);
+  color: #8A7A68 !important;
+  font-size: clamp(12px, 1vw, 14px) !important;
+  font-weight: 300 !important;
+  line-height: 1.7 !important;
+  letter-spacing: .02em !important;
+}
+
+.page.opentab-login-page .fields {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 0.8vw, 14px);
+  margin-bottom: clamp(6px, 0.8vh, 10px);
+}
+
+.page.opentab-login-page .field input {
+  width: 100%;
+  padding: clamp(11px, 1.2vh, 17px) clamp(14px, 1.2vw, 20px);
+  border: 1px solid #3A3028;
+  border-radius: clamp(8px, 1vw, 14px);
+  background: #211C16 !important;
+  color: #EDE6D8 !important;
+  outline: none;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: clamp(12px, 0.9vw, 14px) !important;
+  font-weight: 300 !important;
+  letter-spacing: .04em !important;
+}
+
+.page.opentab-login-page .field input::placeholder { color: #5A4E42 !important; }
+.page.opentab-login-page .field input:focus {
+  border-color: #8A6E3E !important;
+  box-shadow: 0 0 0 3px rgba(184, 151, 90, .08) !important;
+}
+
+.page.opentab-login-page .forgot {
+  display: inline-block;
+  margin-top: clamp(6px, 0.8vh, 10px);
+  margin-bottom: clamp(12px, 1.8vh, 24px);
+  color: #B8975A !important;
+  font-size: clamp(10px, 0.65vw, 12px) !important;
+  letter-spacing: .05em !important;
+  opacity: .8;
+}
+
+.page.opentab-login-page .btn-login {
+  width: 100%;
+  padding: clamp(12px, 1.4vh, 17px);
+  border: none;
+  border-radius: clamp(8px, 1vw, 14px);
+  background: #B8975A !important;
+  color: #100D0A !important;
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: clamp(13px, 1.1vw, 16px) !important;
+  font-weight: 600 !important;
+  letter-spacing: .15em !important;
+  text-transform: uppercase !important;
+}
+
+.page.opentab-login-page .login-role-actions .btn-glass {
+  font-size: clamp(14px, 1.18vw, 15.5px);
+}
+
+.page.opentab-login-page .divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: clamp(14px, 2vh, 24px) 0;
+  color: #3E342A !important;
+  font-size: clamp(9px, 0.6vw, 11px) !important;
+  letter-spacing: .2em !important;
+}
+.page.opentab-login-page .divider::before,
+.page.opentab-login-page .divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #2A2218;
+}
+
+.page.opentab-login-page .btn-secondary {
+  width: 100%;
+  padding: clamp(11px, 1.2vh, 15px);
+  border: 1px solid #3A3028;
+  border-radius: clamp(8px, 1vw, 14px);
+  background: transparent !important;
+  color: #7A6A58 !important;
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: clamp(12px, 1vw, 15px) !important;
+  font-weight: 500 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+
+.page.opentab-login-page .btn-secondary.selected,
+.page.opentab-login-page .btn-secondary:hover {
+  border-color: #8A6E3E !important;
+  color: #EDE6D8 !important;
+}
+
+.page.opentab-login-page .footer-note {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: clamp(4px, 1vh, 12px);
+  color: #4A3E32 !important;
+  text-align: center;
+  font-size: clamp(10px, 0.65vw, 12px) !important;
+  font-weight: 300 !important;
+  line-height: 1.9 !important;
+  letter-spacing: .02em !important;
+}
+.page.opentab-login-page .footer-note a { color: #8A6E3E !important; }
+
+.page.opentab-login-page .image-panel.opentab-login-image {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0E0B08 !important;
+}
+
+.page.opentab-login-page .image-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: .75;
+  filter: saturate(.85) brightness(.9);
+}
+
+.page.opentab-login-page .image-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 7, 4, .88) 0%, rgba(10, 7, 4, .1) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+.page.opentab-login-page .image-badge {
+  position: absolute;
+  bottom: clamp(20px, 3vw, 40px);
+  left: clamp(18px, 2.5vw, 32px);
+  right: clamp(18px, 2.5vw, 32px);
+  z-index: 2;
+  padding: clamp(16px, 2vw, 28px) clamp(18px, 2.2vw, 30px);
+  border: 1px solid rgba(184, 151, 90, .18);
+  border-radius: clamp(12px, 1.2vw, 18px);
+  background: rgba(16, 12, 8, .55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.page.opentab-login-page .badge-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(6px, 0.8vh, 12px);
+  color: #B8975A !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: clamp(8px, 0.6vw, 10px) !important;
+  letter-spacing: .3em !important;
+  text-transform: uppercase !important;
+}
+
+.page.opentab-login-page .badge-label::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #B8975A;
+}
+
+.page.opentab-login-page .badge-title {
+  margin-bottom: clamp(6px, 0.8vh, 12px);
+  color: #EDE6D8 !important;
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: clamp(16px, 1.6vw, 24px) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+.page.opentab-login-page .badge-sub {
+  color: rgba(237, 230, 216, .5) !important;
+  font-size: clamp(11px, 0.75vw, 13px) !important;
+  font-weight: 300 !important;
+  line-height: 1.65 !important;
+}
+
+/* Owner static fixed style for table picker on manual/transfer/checkout. */
+.waiter-static-picker {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: max-content;
+  min-height: 100%;
+  padding: 8px;
+}
+
+.waiter-static-picker-sector {
+  min-width: 300px;
+  padding: 20px;
+  border: 1px dashed rgba(197, 161, 91, 0.25);
+  border-radius: 24px;
+  background: rgba(10, 9, 7, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.waiter-static-picker-sector-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  color: var(--gold);
+}
+.waiter-static-picker-sector-header span {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.waiter-static-picker-sector-header small {
+  opacity: 0.72;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.waiter-static-picker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.waiter-static-picker-table {
+  position: relative;
+  min-width: 112px;
+  min-height: 122px;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 10px 10px 12px;
+  border: 1px solid rgba(197, 161, 91, 0.10);
+  border-radius: 18px;
+  background: rgba(17, 16, 14, 0.22) !important;
+  color: var(--cream);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+.waiter-static-picker-table:hover:not(.action-disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(197, 161, 91, 0.38);
+  background: rgba(197, 161, 91, 0.04) !important;
+}
+
+.waiter-static-picker-table.selected,
+.waiter-static-picker-table.t-sel-from {
+  border-color: rgba(197, 161, 91, 0.55);
+  box-shadow: 0 0 0 3px rgba(197, 161, 91, 0.18), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.waiter-static-picker-table.t-sel-to {
+  border-color: rgba(112, 180, 122, 0.55);
+  box-shadow: 0 0 0 3px rgba(112, 180, 122, 0.18), 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.waiter-static-picker-table.action-disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.waiter-static-table-visual-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 116px;
+  height: 94px;
+}
+
+.waiter-static-picker-table-status {
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Table colors in picker exactly mirror canvas colors and legend. */
+.waiter-status-occupied .venue-table {
+  border-color: rgba(197, 161, 91, 0.72) !important;
+  color: #F2D190 !important;
+}
+.waiter-status-occupied .venue-table-round {
+  background: radial-gradient(circle at 30% 30%, #6E4426, #432715 68%, #2D190E 100%) !important;
+}
+.waiter-status-occupied .venue-table-square,
+.waiter-status-occupied .venue-table-rectangle {
+  background: linear-gradient(145deg, #654126 0%, #422714 55%, #2D180D 100%) !important;
+}
+.waiter-status-free .venue-table {
+  border-color: rgba(112, 180, 122, 0.58) !important;
+  color: #9EDAA5 !important;
+}
+.waiter-status-free .venue-table-round,
+.waiter-status-free .venue-table-square,
+.waiter-status-free .venue-table-rectangle {
+  background: radial-gradient(circle at 30% 30%, #1C2A1D, #121A13 70%, #0D120E 100%) !important;
+}
+.waiter-status-reserved .venue-table {
+  border-color: rgba(122, 171, 204, 0.56) !important;
+  color: #A8CFEA !important;
+}
+.waiter-status-reserved .venue-table-round,
+.waiter-status-reserved .venue-table-square,
+.waiter-status-reserved .venue-table-rectangle {
+  background: radial-gradient(circle at 30% 30%, #1A2230, #111820 70%, #0C1118 100%) !important;
+}
+.waiter-status-payment .venue-table {
+  border-color: rgba(220, 160, 60, 0.68) !important;
+  color: #F1C57A !important;
+}
+.waiter-status-payment .venue-table-round,
+.waiter-status-payment .venue-table-square,
+.waiter-status-payment .venue-table-rectangle {
+  background: radial-gradient(circle at 30% 30%, #2A2010, #1A1508 72%, #100D06 100%) !important;
+}
+.waiter-status-free .venue-table-chair {
+  border-color: rgba(112, 180, 122, 0.42) !important;
+  background: #1C2A1D !important;
+}
+.waiter-status-reserved .venue-table-chair {
+  border-color: rgba(122, 171, 204, 0.42) !important;
+  background: #1A2230 !important;
+}
+.waiter-status-payment .venue-table-chair {
+  border-color: rgba(220, 160, 60, 0.48) !important;
+  background: #2A2010 !important;
+}
+
+/* Also neutralise older white prototype picker styles if they remain in DOM. */
+.waiter-prototype-table {
+  background: rgba(17, 16, 14, 0.22) !important;
+  border-color: rgba(197, 161, 91, 0.10) !important;
+  color: var(--cream) !important;
+}
+
+/* Side/popup panels use the same typography and dark glass surfaces. */
+.info-panel > div:not(.info-panel-accent),
+.waiter-slide-panel > div:not(.info-panel-accent),
+.modal-container,
+.success-box {
+  color: var(--cream);
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  background: rgba(17, 16, 14, 0.88) !important;
+}
+
+.panel-table-name,
+.ov-guest-name,
+.split-guest-name,
+.partial-guest-header,
+.cart-title,
+.success-title {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-weight: 600;
+}
+
+.panel-status-badge,
+.ov-guest-status,
+.panel-section-label,
+.cart-count,
+.cart-total-label,
+.split-progress-label {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+
+@media (max-height: 760px) {
+  .page.opentab-login-page {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .page.opentab-login-page .card.opentab-login-card {
+    min-height: 0;
+  }
+
+  .page.opentab-login-page .form-body.opentab-login-body {
+    flex: none;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 860px) {
+  .page.opentab-login-page .card.opentab-login-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto clamp(140px, 25dvh, 220px);
+    max-width: 480px;
+    min-height: 0;
+  }
+  .page.opentab-login-page .form-panel.opentab-login-form {
+    border-right: none;
+    border-bottom: 1px solid #2A2218;
+  }
+  .page.opentab-login-page .image-panel.opentab-login-image {
+    min-height: 0;
+    height: auto;
+  }
+  .waiter-static-picker {
+    flex-direction: column;
+    min-width: 0;
+  }
+  .waiter-static-picker-sector {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ============================================================
+   FINAL MANUAL / MAP GLASS + VERTICAL SECTORS PASS
+   Reference: owner map-header + map-canvas-container glass values.
+   ============================================================ */
+
+/* Manual order header must be the same owner glass block as other map headers. */
+.manual-order-page .manual-header.map-header,
+.manual-order-page .manual-header,
+.waiter-flow-page .move-header,
+.waiter-flow-page .close-header,
+.waiter-orders-page .orders-header {
+  background: rgba(17, 16, 14, 0.5) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(197, 161, 91, 0.12) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: none !important;
+  color: var(--cream) !important;
+}
+
+.manual-order-page .manual-header *,
+.waiter-flow-page .move-header *,
+.waiter-flow-page .close-header * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.manual-order-page .manual-header h1,
+.waiter-flow-page .move-header h1,
+.waiter-flow-page .close-header h1 {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+/* Exactly one divider line in the manual-order header: between title row and legend. */
+.manual-header-legend-row {
+  border-top: 1px solid rgba(197, 161, 91, 0.10) !important;
+  padding-top: 12px !important;
+  margin-top: 0 !important;
+}
+
+.manual-header-legend-row .waiter-table-legend {
+  border-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Main islands use the same glass surface as owner .map-canvas-container. */
+.manual-order-page .map-canvas-container,
+.manual-order-page .step-table,
+.waiter-flow-page .map-canvas-container,
+.waiter-orders-page .orders-content {
+  background: rgba(17, 16, 14, 0.35) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  border-radius: var(--radius-card) !important;
+  box-shadow: none !important;
+}
+
+/* Sectors are stacked vertically on every waiter table map/picker. */
+.waiter-static-picker,
+.waiter-map-stacked-sectors {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 24px !important;
+  padding: 8px !important;
+}
+
+.waiter-static-picker-sector,
+.waiter-map-sector-block {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  background: rgba(10, 9, 7, 0.4) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px dashed rgba(197, 161, 91, 0.25) !important;
+  border-radius: 24px !important;
+  padding: 20px !important;
+  box-shadow: none !important;
+}
+
+.waiter-static-picker-grid {
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 24px !important;
+}
+
+/* Mapa stolova intentionally keeps the pre-last-change static owner layout. */
+.waiter-prototype-picker-shell {
+  overflow: auto !important;
+}
+
+/* Consistent table picker card: no white cards, same dark owner/static fixed look everywhere. */
+.waiter-static-picker-table,
+.waiter-prototype-table {
+  min-width: 112px !important;
+  min-height: 122px !important;
+  padding: 10px 10px 12px !important;
+  display: grid !important;
+  place-items: center !important;
+  gap: 8px !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  border-radius: 18px !important;
+  background: rgba(17, 16, 14, 0.22) !important;
+  color: var(--cream) !important;
+  box-shadow: none !important;
+}
+
+.waiter-static-picker-table:hover:not(.action-disabled),
+.waiter-prototype-table:hover:not(.action-disabled) {
+  transform: translateY(-2px) !important;
+  border-color: rgba(197, 161, 91, 0.38) !important;
+  background: rgba(197, 161, 91, 0.04) !important;
+}
+
+.waiter-static-picker-table-status,
+.waiter-prototype-table-status {
+  color: var(--muted) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+/* Manual-order temporary list / cart: align name, qty controls and price like checkout item rows. */
+.cart-panel {
+  background: rgba(17, 16, 14, 0.55) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(197, 161, 91, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+.cart-items {
+  display: grid !important;
+  align-content: start !important;
+  gap: 8px !important;
+  padding: 10px 12px !important;
+}
+
+.cart-item {
+  display: grid !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  overflow: hidden !important;
+}
+
+.cart-item-name {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
+  padding: 0 18px 0 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  text-align: left !important;
+  white-space: normal !important;
+}
+
+.cart-item-note-preview {
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: #A59274 !important;
+  font-size: 10.5px !important;
+  font-style: italic !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.cart-item-bottom {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(74px, auto) !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.cart-item-price {
+  justify-self: end !important;
+  color: var(--gold-dim) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+.qty-controls {
+  justify-self: start !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  overflow: hidden !important;
+  border-radius: 9px !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+}
+
+.qty-num {
+  min-width: 26px !important;
+  color: var(--cream) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 26px !important;
+  text-align: center !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ============================================================
+   SSU14 ONLY — manual order header context action.
+   "Mapa stolova" / "Odustani" is a separate owner-like glass button;
+   table number and sector underneath are plain descriptive text.
+   ============================================================ */
+.manual-order-page .manual-header-right {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.manual-order-page .manual-context-block {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 5px !important;
+  min-width: 140px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.manual-order-page .manual-context-action {
+  min-height: 38px !important;
+  padding: 9px 18px !important;
+  border-radius: 12px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--gold) !important;
+  white-space: nowrap !important;
+}
+
+.manual-order-page .manual-context-meta {
+  padding-left: 2px !important;
+  color: var(--muted) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (max-width: 860px) {
+  .manual-order-page .manual-header-right {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* ============================================================
+   FINAL SSU14: empty first state + wider cart footer.
+   Menu/cart are rendered only after table selection; these styles make
+   the manual-order cart footer readable once it appears.
+   ============================================================ */
+.manual-order-page .step-menu {
+  grid-template-columns: minmax(0, 1fr) clamp(360px, 34vw, 430px) !important;
+  align-items: stretch !important;
+  gap: 20px !important;
+}
+
+.manual-order-page .cart-panel {
+  width: clamp(360px, 34vw, 430px) !important;
+  min-width: 360px !important;
+  max-width: 430px !important;
+}
+
+.manual-order-page .cart-footer {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+  padding: 16px 20px 20px !important;
+  overflow: visible !important;
+}
+
+.manual-order-page .cart-footer .cart-divider {
+  width: 100% !important;
+  margin: 0 0 2px !important;
+}
+
+.manual-order-page .cart-total-row {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 16px !important;
+  padding: 4px 0 2px !important;
+}
+
+.manual-order-page .cart-total-label,
+.manual-order-page .cart-total-amount {
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}
+
+.manual-order-page .btn-send-order,
+.manual-order-page .panel-btn-ghost.full-w {
+  width: 100% !important;
+  min-height: 44px !important;
+  padding: 12px 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  line-height: 1.15 !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+@media (max-width: 980px) {
+  .manual-order-page .step-menu {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .manual-order-page .cart-panel {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+}
+.manual-order-page .step-menu {
+  display: grid !important;
+}
+
+/* ============================================================
+   FINAL PASS — owner-like glass menu in SSU14, richer waiter map panel,
+   and owner-consistent page layout for all waiter pages.
+   ============================================================ */
+
+/* Every waiter page follows the owner page shell: fixed glass header + one scroll island. */
+.waiter-layout,
+.waiter-orders-page,
+.manual-order-page,
+.waiter-flow-page,
+.waiter-report-page {
+  position: relative !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: clamp(16px, 2vw, 24px) !important;
+  overflow: hidden !important;
+}
+
+.waiter-report-page .map-header,
+.waiter-layout .map-header,
+.waiter-orders-page .orders-header,
+.manual-order-page .manual-header,
+.waiter-flow-page .move-header,
+.waiter-flow-page .close-header {
+  position: relative !important;
+  z-index: 20 !important;
+  flex-shrink: 0 !important;
+}
+
+.waiter-report-grid,
+.waiter-report-section,
+.orders-content,
+.manual-order-page .step-menu,
+.manual-order-page .waiter-prototype-picker-shell,
+.waiter-flow-page .main-body,
+.waiter-layout .waiter-workspace-shell {
+  min-height: 0 !important;
+}
+
+.waiter-report-page > .waiter-report-grid,
+.waiter-report-page > .waiter-report-section {
+  border-radius: var(--radius-card) !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  background: rgba(17, 16, 14, 0.35) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+/* SSU14 menu: same dark glass family as owner menu components. */
+.manual-order-page .menu-panel {
+  gap: 14px !important;
+}
+
+.manual-order-page .menu-panel-card {
+  border-radius: var(--radius-card) !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background:
+    radial-gradient(ellipse 120% 100% at 50% 0%, rgba(197, 161, 91, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(32, 30, 26, 0.82) 0%, rgba(22, 20, 17, 0.90) 100%) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.40) !important;
+  overflow: hidden !important;
+}
+
+.manual-order-page .menu-search-wrap {
+  padding: 16px 18px 0 !important;
+}
+
+.manual-order-page .category-tabs-wrap {
+  padding: 12px 18px 0 !important;
+}
+
+.manual-order-page .category-tabs {
+  gap: 8px !important;
+  padding-bottom: 14px !important;
+}
+
+.manual-order-page .cat-tab {
+  min-height: 34px !important;
+  padding: 7px 16px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(197, 161, 91, 0.14) !important;
+  background: rgba(10, 9, 7, 0.20) !important;
+  color: rgba(237, 230, 216, 0.58) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.manual-order-page .cat-tab.active {
+  border-color: rgba(197, 161, 91, 0.48) !important;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(197, 161, 91, 0.25) 0%, rgba(197, 161, 91, 0.12) 42%, rgba(197, 161, 91, 0.06) 100%) !important;
+  color: var(--gold) !important;
+  box-shadow:
+    inset 0 0.5px 1px rgba(255, 255, 255, 0.14),
+    0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+
+.manual-order-page .menu-items-scroll {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+}
+
+.manual-order-page .menu-items-grid {
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)) !important;
+  gap: 14px !important;
+  padding: 16px 18px 18px !important;
+}
+
+.manual-order-page .menu-item-card {
+  min-height: 150px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background:
+    radial-gradient(ellipse 120% 100% at 50% 0%, rgba(197, 161, 91, 0.10) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(32, 30, 26, 0.88) 0%, rgba(22, 20, 17, 0.92) 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.40) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  color: var(--cream) !important;
+  transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.22s, box-shadow 0.22s !important;
+}
+
+.manual-order-page .menu-item-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(197, 161, 91, 0.40) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 16px 36px rgba(0, 0, 0, 0.50),
+    0 0 0 1px rgba(197, 161, 91, 0.15) !important;
+}
+
+.manual-order-page .menu-item-card.in-cart {
+  border-color: rgba(112, 180, 122, 0.38) !important;
+  background:
+    radial-gradient(ellipse 120% 100% at 50% 0%, rgba(112, 180, 122, 0.12) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(28, 42, 30, 0.88) 0%, rgba(18, 28, 19, 0.92) 100%) !important;
+}
+
+.manual-order-page .menu-item-name {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 650 !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.manual-order-page .menu-item-desc {
+  min-height: 38px !important;
+  margin: 8px 0 14px !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 11.5px !important;
+  line-height: 1.45 !important;
+}
+
+.manual-order-page .menu-item-footer {
+  position: relative !important;
+  padding-top: 12px !important;
+}
+
+.manual-order-page .menu-item-footer::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(197, 161, 91, 0.18) 20%, rgba(197, 161, 91, 0.36) 50%, rgba(197, 161, 91, 0.18) 80%, transparent 100%) !important;
+}
+
+.manual-order-page .menu-item-price {
+  color: var(--gold) !important;
+  font-size: 13.5px !important;
+  font-weight: 750 !important;
+}
+
+.manual-order-page .menu-item-add-btn {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(197, 161, 91, 0.34) !important;
+  background: rgba(197, 161, 91, 0.16) !important;
+  color: var(--gold) !important;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+/* Waiter table map side panel: vertical, readable, same font system as app. */
+.waiter-map-info-panel.open {
+  width: clamp(360px, 30vw, 430px) !important;
+}
+
+.waiter-map-info-panel > .waiter-map-panel-content,
+.info-panel.waiter-map-info-panel > div.waiter-map-panel-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+  padding: 20px 18px 22px !important;
+  border-radius: var(--radius-card) !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background: rgba(17, 16, 14, 0.88) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  box-shadow:
+    0 30px 60px -15px rgba(0, 0, 0, 0.60),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.waiter-map-panel-header {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: center !important;
+  padding-bottom: 0 !important;
+}
+
+.waiter-map-panel-title {
+  min-width: 0 !important;
+}
+
+.waiter-map-info-panel .panel-table-name {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 22px !important;
+  font-weight: 650 !important;
+  line-height: 1.1 !important;
+  color: var(--cream) !important;
+}
+
+.waiter-map-info-panel .panel-table-meta {
+  margin-top: 3px !important;
+  color: var(--muted) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.waiter-map-panel-section {
+  display: grid !important;
+  gap: 9px !important;
+  padding: 13px 12px !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  background: rgba(255, 255, 255, 0.025) !important;
+}
+
+.waiter-map-info-panel .panel-section-label {
+  color: rgba(237, 230, 216, 0.46) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.waiter-map-guests-list,
+.waiter-map-order-list {
+  display: grid !important;
+  gap: 8px !important;
+}
+
+.waiter-map-guest-row,
+.waiter-map-order-row {
+  display: grid !important;
+  gap: 8px !important;
+  align-items: center !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.055) !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+}
+
+.waiter-map-guest-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  padding: 10px 11px !important;
+}
+
+.waiter-map-guest-row span,
+.waiter-map-order-main span {
+  min-width: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+}
+
+.waiter-map-guest-row em {
+  color: var(--gold-dim) !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+.waiter-map-opened-time {
+  color: var(--cream) !important;
+  font-size: 14px !important;
+  font-weight: 650 !important;
+}
+
+.waiter-map-order-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  padding: 10px 11px !important;
+}
+
+.waiter-map-order-main {
+  display: grid !important;
+  min-width: 0 !important;
+  gap: 3px !important;
+}
+
+.waiter-map-order-main small {
+  color: rgba(255, 255, 255, 0.34) !important;
+  font-size: 10.5px !important;
+  line-height: 1.2 !important;
+}
+
+.waiter-map-order-meta {
+  display: inline-grid !important;
+  justify-items: end !important;
+  gap: 3px !important;
+  white-space: nowrap !important;
+}
+
+.waiter-map-order-meta span {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.waiter-map-order-meta b,
+.waiter-map-panel-total b {
+  color: var(--gold) !important;
+  font-size: 12.5px !important;
+  font-weight: 750 !important;
+}
+
+.waiter-map-empty-line {
+  color: var(--muted) !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+.waiter-map-panel-total {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+}
+
+.waiter-map-panel-total span {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+
+.waiter-map-panel-actions {
+  display: grid !important;
+  gap: 9px !important;
+  margin-top: 0 !important;
+}
+
+.waiter-map-panel-actions .waiter-action-tile,
+.waiter-map-panel-actions .panel-btn-ghost {
+  width: 100% !important;
+  min-height: 42px !important;
+  justify-content: flex-start !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.5px !important;
+}
+
+@media (max-width: 980px) {
+  .waiter-map-info-panel.open {
+    width: 100% !important;
+  }
+}
+
+
+/* ============================================================
+   FINAL REQUEST: keep owner menu untouched; restore waiter hatched islands,
+   keep manual menu as waiter-owned glass cards, and enforce status actions.
+   ============================================================ */
+.manual-order-page .step-menu,
+.manual-order-page .waiter-prototype-picker-shell,
+.manual-order-page .map-canvas-container.waiter-workspace,
+.waiter-flow-page .map-canvas-container,
+.waiter-layout .waiter-workspace-shell > .map-canvas-container,
+.waiter-orders-page .orders-content {
+  background-color: rgba(17, 16, 14, 0.35) !important;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(60, 50, 40, 0.30) 0%, transparent 70%),
+    repeating-linear-gradient(45deg, rgba(197, 161, 91, 0.02) 0px, rgba(197, 161, 91, 0.02) 2px, transparent 2px, transparent 8px) !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  border-radius: var(--radius-card) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+.manual-order-page .step-menu {
+  padding: 20px !important;
+  overflow: hidden !important;
+}
+
+.manual-order-page .menu-panel-card {
+  background:
+    radial-gradient(ellipse 120% 100% at 50% 0%, rgba(197, 161, 91, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(32, 30, 26, 0.82) 0%, rgba(22, 20, 17, 0.90) 100%) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.40) !important;
+}
+
+.waiter-action-tile:disabled,
+.panel-btn-primary:disabled,
+.panel-btn-move:disabled,
+.panel-btn-partial:disabled,
+.panel-btn-release:disabled,
+.split-pay-btn:disabled {
+  opacity: 0.38 !important;
+  cursor: not-allowed !important;
+  filter: grayscale(0.35) !important;
+  transform: none !important;
+}
+
+.waiter-action-tile:disabled:hover,
+.panel-btn-primary:disabled:hover,
+.panel-btn-move:disabled:hover,
+.panel-btn-partial:disabled:hover,
+.panel-btn-release:disabled:hover,
+.split-pay-btn:disabled:hover {
+  transform: none !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.waiter-map-guest-row.reserved span {
+  color: #7AABCC !important;
+}
+
+.badge-reserved {
+  color: #7AABCC !important;
+  border-color: rgba(122, 171, 204, 0.35) !important;
+  background: rgba(122, 171, 204, 0.10) !important;
+}
+
+/* FINAL TINY FIX — manual-order menu category icons only.
+   Keep everything else intact: category controls use the same pill/icon feel
+   as the Pending Orders header, and item cards no longer show numeric badges. */
+.manual-order-page .category-tabs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.manual-order-page .category-tabs .cat-tab.status-pill {
+  min-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 7px 16px !important;
+  border-radius: 10px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.48) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.manual-order-page .category-tabs .cat-tab.status-pill:hover:not(.active) {
+  border-color: rgba(197, 161, 91, 0.25) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.manual-order-page .category-tabs .cat-tab.status-pill.active {
+  border-color: rgba(197, 161, 91, 0.5) !important;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    rgba(197, 161, 91, 0.25) 0%,
+    rgba(197, 161, 91, 0.12) 40%,
+    rgba(197, 161, 91, 0.06) 100%
+  ) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow:
+    inset 0 0.5px 1px rgba(255, 255, 255, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+.manual-order-page .manual-category-icon {
+  min-width: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  border-radius: 40px !important;
+  border: 0.5px solid rgba(197, 161, 91, 0.2) !important;
+  background: rgba(197, 161, 91, 0.15) !important;
+  color: var(--gold) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+}
+
+.manual-order-page .cat-tab.status-pill.active .manual-category-icon {
+  border-color: rgba(197, 161, 91, 0.3) !important;
+  background: rgba(197, 161, 91, 0.3) !important;
+}
+
+.manual-order-page .menu-item-add-btn {
+  border-radius: 10px !important;
+}
+
+.manual-order-page .menu-item-add-btn.in-cart {
+  background: rgba(197, 161, 91, 0.16) !important;
+  border-color: rgba(197, 161, 91, 0.34) !important;
+  color: var(--gold) !important;
+}
+
+/* ============================================================
+   FINAL FIX — manual category pills are real glass + pending-orders font sync.
+   Scope is intentionally narrow: SSU14 category filters and SSU12 typography only.
+   ============================================================ */
+.manual-order-page .category-tabs .cat-tab.status-pill {
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(255, 255, 255, 0.085) 0%, rgba(255, 255, 255, 0.040) 46%, rgba(255, 255, 255, 0.018) 100%) !important;
+  backdrop-filter: blur(18px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(170%) !important;
+  box-shadow:
+    inset 0 0.5px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.20),
+    0 4px 12px rgba(0, 0, 0, 0.22) !important;
+  color: rgba(237, 230, 216, 0.68) !important;
+}
+
+.manual-order-page .category-tabs .cat-tab.status-pill:hover:not(.active) {
+  border-color: rgba(197, 161, 91, 0.34) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(197, 161, 91, 0.16) 0%, rgba(197, 161, 91, 0.07) 48%, rgba(255, 255, 255, 0.020) 100%) !important;
+  color: rgba(237, 230, 216, 0.86) !important;
+  box-shadow:
+    inset 0 0.5px 1px rgba(255, 255, 255, 0.22),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.22),
+    0 6px 16px rgba(0, 0, 0, 0.28) !important;
+}
+
+.manual-order-page .category-tabs .cat-tab.status-pill.active {
+  border-color: rgba(197, 161, 91, 0.55) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(197, 161, 91, 0.28) 0%, rgba(197, 161, 91, 0.13) 42%, rgba(197, 161, 91, 0.055) 100%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  color: var(--gold) !important;
+  box-shadow:
+    inset 0 0.5px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.24),
+    0 8px 18px rgba(0, 0, 0, 0.30),
+    0 0 18px rgba(197, 161, 91, 0.08) !important;
+}
+
+.manual-order-page .manual-category-icon {
+  backdrop-filter: blur(12px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+  box-shadow:
+    inset 0 0.5px 1px rgba(255, 255, 255, 0.16),
+    0 2px 7px rgba(0, 0, 0, 0.20) !important;
+}
+
+/* SSU12 pending orders: one font system across the whole screen. */
+.waiter-orders-page,
+.waiter-orders-page * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.waiter-orders-page .orders-title h1 {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: clamp(20px, 2.3vw, 26px) !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--cream) !important;
+}
+
+.waiter-orders-page .orders-title p,
+.waiter-orders-page .sort-bar,
+.waiter-orders-page .multi-counter,
+.waiter-orders-page .card-guest-meta,
+.waiter-orders-page .archive-meta,
+.waiter-orders-page .item-options,
+.waiter-orders-page .item-note,
+.waiter-orders-page .empty-sub {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: clamp(11px, 1vw, 13px) !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  color: var(--muted) !important;
+}
+
+.waiter-orders-page .status-pill,
+.waiter-orders-page .status-badge,
+.waiter-orders-page .orders-live-badge,
+.waiter-orders-page .order-status-badge,
+.waiter-orders-page .order-timer,
+.waiter-orders-page .btn-action,
+.waiter-orders-page .btn-confirm-sm,
+.waiter-orders-page .btn-cancel-sm,
+.waiter-orders-page .item-check-btn,
+.waiter-orders-page .reject-panel label,
+.waiter-orders-page .partial-header {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-weight: 600 !important;
+}
+
+.waiter-orders-page .status-pill {
+  font-size: 13px !important;
+  letter-spacing: 0 !important;
+}
+
+.waiter-orders-page .status-badge,
+.waiter-orders-page .order-status-badge,
+.waiter-orders-page .order-timer {
+  font-size: 11px !important;
+  line-height: 1 !important;
+}
+
+.waiter-orders-page .card-guest-name,
+.waiter-orders-page .archive-guest,
+.waiter-orders-page .item-name,
+.waiter-orders-page .empty-title {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: var(--cream) !important;
+}
+
+.waiter-orders-page .archive-info {
+  min-height: 44px !important;
+  display: flex !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.waiter-orders-page .archive-guest {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.waiter-orders-page .table-badge,
+.waiter-orders-page .archive-table-badge {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+
+.waiter-orders-page .item-qty {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.waiter-orders-page .reject-panel textarea,
+.waiter-orders-page .partial-note-input {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+
+/* FINAL TARGETED FIX — SSU14 category filters must use the exact same StatusPills glass component as SSU12 Aktivni/Arhiva. */
+.manual-order-page .manual-category-pills {
+  margin: 0 !important;
+}
+
+/* FINAL TARGETED FIX — SSU12 reject/partial inline action buttons were too small. */
+.waiter-orders-page .reject-actions,
+.waiter-orders-page .partial-confirm-actions {
+  display: flex !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+  margin-top: 12px !important;
+}
+
+.waiter-orders-page .reject-actions .btn-confirm-sm,
+.waiter-orders-page .reject-actions .btn-cancel-sm,
+.waiter-orders-page .partial-confirm-actions .btn-confirm-sm,
+.waiter-orders-page .partial-confirm-actions .btn-cancel-sm {
+  min-height: 42px !important;
+  padding: 11px 18px !important;
+  border-radius: 12px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+}
+
+.waiter-orders-page .reject-actions .btn-confirm-sm,
+.waiter-orders-page .partial-confirm-actions .btn-confirm-sm {
+  flex: 1 1 auto !important;
+}
+
+.waiter-orders-page .reject-actions .btn-cancel-sm,
+.waiter-orders-page .partial-confirm-actions .btn-cancel-sm {
+  flex: 0 0 auto !important;
+  min-width: 94px !important;
+}
+
+/* FINAL: remove red numeric order badges from waiter table visuals everywhere. */
+.waiter-table-orders-badge {
+  display: none !important;
+}
+
+/* SSU13 transfer: invalid destination click feedback, matching prototype shake. */
+.waiter-static-picker-table.shake,
+.waiter-venue-table-wrapper.shake {
+  animation: waiterTableShake 0.38s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes waiterTableShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+
+/* SSU13 transfer: on first entry no right panel/list is visible; it opens only after a table click. */
+.waiter-flow-page .waiter-slide-panel:not(.open) {
+  display: none !important;
+}
+
+.waiter-flow-page .info-panel,
+.waiter-flow-page .info-panel * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.waiter-flow-page .partial-mode-label,
+.waiter-flow-page .modal-title,
+.waiter-flow-page .panel-table-badge {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+
+/* FINAL TARGETED VISUAL FIX — SSU13 transfer panel typography and button rhythm only.
+   Functionality/flow intentionally unchanged. */
+.table-transfer-page .info-panel.open {
+  width: clamp(340px, 29vw, 410px) !important;
+}
+
+.table-transfer-page .transfer-destination-cancel {
+  flex-shrink: 0 !important;
+  min-height: 42px !important;
+  padding-inline: 18px !important;
+  border-color: rgba(200, 132, 106, 0.32) !important;
+  color: #f0c0a8 !important;
+}
+
+.table-transfer-page .info-panel > div:not(.info-panel-accent) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  padding: 20px 18px 22px !important;
+  border-radius: var(--radius-card) !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background: rgba(17, 16, 14, 0.88) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  box-shadow:
+    0 30px 60px -15px rgba(0, 0, 0, 0.60),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.table-transfer-page .panel-table-header {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: center !important;
+  padding: 4px 0 0 !important;
+}
+
+.table-transfer-page .panel-table-badge {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-shrink: 0 !important;
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  color: var(--gold) !important;
+  background: radial-gradient(circle at 30% 30%, #3A2E24, #1F1A15) !important;
+  border: 1.5px solid rgba(197, 161, 91, 0.55) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.42), 0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+.table-transfer-page .panel-table-name {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 21px !important;
+  font-weight: 650 !important;
+  line-height: 1.1 !important;
+  color: var(--cream) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.table-transfer-page .panel-table-meta {
+  margin-top: 4px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  color: var(--muted) !important;
+}
+
+.table-transfer-page .panel-status-badge {
+  justify-self: end !important;
+  align-self: start !important;
+  margin-left: 0 !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.table-transfer-page .panel-section-label,
+.table-transfer-page .partial-count-bar {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(237, 230, 216, 0.46) !important;
+}
+
+.table-transfer-page .ov-guest-group,
+.table-transfer-page .waiter-transfer-guest-card {
+  display: grid !important;
+  gap: 8px !important;
+  padding: 12px !important;
+  border-radius: 15px !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  background: rgba(255, 255, 255, 0.025) !important;
+}
+
+.table-transfer-page .ov-guest-name,
+.table-transfer-page .partial-guest-header,
+.table-transfer-page .waiter-transfer-guest-head strong {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.5px !important;
+  font-weight: 650 !important;
+  line-height: 1.3 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.table-transfer-page .panel-orders-list,
+.table-transfer-page .guest-transfer-list {
+  display: grid !important;
+  gap: 10px !important;
+  max-height: none !important;
+  margin-bottom: 0 !important;
+}
+
+.table-transfer-page .ov-order-row {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 0 0 !important;
+  border-bottom: none !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.table-transfer-page .ov-qty {
+  min-width: 26px !important;
+  height: 22px !important;
+  border-radius: 7px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+}
+
+.table-transfer-page .ov-oname,
+.table-transfer-page .waiter-transfer-guest-items {
+  min-width: 0 !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.table-transfer-page .ov-price,
+.table-transfer-page .waiter-transfer-guest-head b {
+  justify-self: end !important;
+  white-space: nowrap !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  color: var(--gold-dim) !important;
+}
+
+.table-transfer-page .panel-total-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 12px 0 2px !important;
+  border-top: 1px solid rgba(197, 161, 91, 0.14) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.table-transfer-page .panel-total-row > span:first-child {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+
+.table-transfer-page .panel-total-amount {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+}
+
+.table-transfer-page .panel-actions {
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 2px !important;
+}
+
+.table-transfer-page .panel-btn-partial,
+.table-transfer-page .panel-btn-move,
+.table-transfer-page .panel-btn-ghost,
+.table-transfer-page .panel-btn-primary,
+.table-transfer-page .panel-btn-secondary {
+  width: 100% !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 16px !important;
+  border-radius: 13px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.8px !important;
+  font-weight: 650 !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+}
+
+.table-transfer-page .panel-btn-ghost {
+  margin-top: 0 !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  color: rgba(237, 230, 216, 0.66) !important;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.table-transfer-page .panel-btn-ghost:hover:not(:disabled) {
+  background: rgba(197, 161, 91, 0.08) !important;
+  border-color: rgba(197, 161, 91, 0.26) !important;
+  color: var(--gold) !important;
+}
+
+.table-transfer-page .panel-warning {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+@media (max-width: 980px) {
+  .table-transfer-page .info-panel.open {
+    width: 100% !important;
+  }
+}
+
+/* Checkout / naplata: same initial empty flow as transfer/manual + shared elegant split selection. */
+.checkout-page .info-panel.open {
+  width: 330px !important;
+}
+
+.checkout-page .info-panel,
+.checkout-page .info-panel * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-table-badge,
+.checkout-page .panel-total-amount,
+.checkout-page .amount-value,
+.checkout-page .split-mode-label {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+.checkout-page .panel-table-badge {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.checkout-page .panel-table-name {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 650 !important;
+  color: var(--cream) !important;
+}
+
+.checkout-page .panel-table-meta,
+.checkout-page .panel-section-label,
+.checkout-page .split-progress-label {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-section-label,
+.checkout-page .split-progress-label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(237, 230, 216, 0.46) !important;
+}
+
+.checkout-page .panel-orders-list,
+.checkout-page .checkout-split-guest-list {
+  display: grid !important;
+  gap: 10px !important;
+  max-height: 320px !important;
+  overflow-y: auto !important;
+  margin-bottom: 14px !important;
+}
+
+.checkout-page .ov-guest-group,
+.checkout-page .checkout-split-guest-card,
+.table-transfer-page .waiter-transfer-guest-card {
+  border-radius: 15px !important;
+  border: 1px solid rgba(197, 161, 91, 0.12) !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(197, 161, 91, 0.08), transparent 66%),
+    rgba(255, 255, 255, 0.026) !important;
+  box-shadow:
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.08),
+    0 8px 22px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+}
+
+.checkout-page .checkout-split-guest-card,
+.table-transfer-page .waiter-transfer-guest-card {
+  position: relative !important;
+  padding: 13px 13px 12px !important;
+  display: grid !important;
+  gap: 9px !important;
+  overflow: hidden !important;
+}
+
+.checkout-page .checkout-split-guest-card::before,
+.table-transfer-page .waiter-transfer-guest-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(180deg, var(--gold), var(--gold-dim));
+  opacity: 0.45;
+}
+
+.checkout-page .checkout-split-guest-card:hover,
+.table-transfer-page .waiter-transfer-guest-card:hover {
+  border-color: rgba(197, 161, 91, 0.28) !important;
+  transform: translateY(-1px);
+}
+
+.checkout-page .checkout-split-guest-card.checked,
+.table-transfer-page .waiter-transfer-guest-card.checked {
+  border-color: rgba(112, 180, 122, 0.42) !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(112, 180, 122, 0.12), transparent 68%),
+    rgba(112, 180, 122, 0.055) !important;
+}
+
+.checkout-page .checkout-split-guest-card.checked::before,
+.table-transfer-page .waiter-transfer-guest-card.checked::before {
+  background: linear-gradient(180deg, #70B47A, rgba(112, 180, 122, 0.45));
+  opacity: 0.75;
+}
+
+.checkout-page .waiter-transfer-guest-head,
+.table-transfer-page .waiter-transfer-guest-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+}
+
+.checkout-page .waiter-transfer-guest-head strong,
+.table-transfer-page .waiter-transfer-guest-head strong {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.6px !important;
+  font-weight: 700 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.checkout-page .waiter-transfer-guest-head b,
+.table-transfer-page .waiter-transfer-guest-head b {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11.7px !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+  white-space: nowrap !important;
+}
+
+.checkout-page .waiter-transfer-guest-items,
+.table-transfer-page .waiter-transfer-guest-items {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11.7px !important;
+  line-height: 1.45 !important;
+  color: rgba(237, 230, 216, 0.58) !important;
+}
+
+.checkout-page .checkout-split-guest-card .ov-guest-status {
+  justify-self: start;
+  margin-left: 0 !important;
+}
+
+.checkout-page .split-pay-btn {
+  width: 100% !important;
+  min-height: 38px !important;
+  padding: 9px 12px !important;
+  border-radius: 11px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.4px !important;
+  font-weight: 700 !important;
+  background: radial-gradient(ellipse at center, rgba(197, 161, 91, 0.22), rgba(197, 161, 91, 0.08)) !important;
+  border: 1px solid rgba(197, 161, 91, 0.42) !important;
+  color: var(--gold) !important;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+.checkout-page .split-pay-btn:disabled {
+  background: rgba(112, 180, 122, 0.08) !important;
+  border-color: rgba(112, 180, 122, 0.28) !important;
+  color: rgba(112, 180, 122, 0.74) !important;
+  opacity: 1 !important;
+}
+
+.checkout-page .panel-actions {
+  display: grid !important;
+  gap: 10px !important;
+  margin-top: 2px !important;
+}
+
+.checkout-page .panel-btn-primary,
+.checkout-page .panel-btn-secondary,
+.checkout-page .panel-btn-release,
+.checkout-page .panel-btn-ghost,
+.checkout-page .split-back-btn {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-btn-primary,
+.checkout-page .panel-btn-secondary,
+.checkout-page .panel-btn-release,
+.checkout-page .panel-btn-ghost {
+  width: 100% !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 16px !important;
+  border-radius: 13px !important;
+  font-size: 12.8px !important;
+  font-weight: 650 !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+}
+
+.checkout-page .panel-btn-ghost {
+  background: rgba(255, 255, 255, 0.045) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  color: rgba(237, 230, 216, 0.66) !important;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.checkout-page .panel-warning.checkout-online-info,
+.checkout-online-info {
+  background: rgba(112, 180, 122, 0.07) !important;
+  border-color: rgba(112, 180, 122, 0.28) !important;
+  color: rgba(112, 180, 122, 0.90) !important;
+}
+
+.checkout-paid-summary {
+  border-color: rgba(112, 180, 122, 0.18) !important;
+  background: rgba(112, 180, 122, 0.06) !important;
+}
+
+.checkout-paid-summary .amount-value {
+  color: #70B47A !important;
+}
+
+@media (max-width: 980px) {
+  .checkout-page .info-panel.open {
+    width: 100% !important;
+  }
+}
+
+/* FINAL TARGETED FIX — SSU15 checkout panel typography and occupied-table payment choices.
+   Functional flow stays the same; this only forces checkout panel to match the table-map/transfer typography. */
+.checkout-page .checkout-info-panel.open {
+  width: clamp(340px, 29vw, 410px) !important;
+}
+
+.checkout-page .checkout-info-panel > div:not(.info-panel-accent) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  padding: 20px 18px 22px !important;
+  border-radius: var(--radius-card) !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background: rgba(17, 16, 14, 0.88) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  box-shadow:
+    0 30px 60px -15px rgba(0, 0, 0, 0.60),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-table-header {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: center !important;
+  padding: 4px 0 0 !important;
+}
+
+.checkout-page .panel-table-badge {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-shrink: 0 !important;
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  color: var(--gold) !important;
+  background: radial-gradient(circle at 30% 30%, #3A2E24, #1F1A15) !important;
+  border: 1.5px solid rgba(197, 161, 91, 0.55) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.42), 0 8px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+.checkout-page .panel-table-name {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 21px !important;
+  font-weight: 650 !important;
+  line-height: 1.1 !important;
+  color: var(--cream) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.checkout-page .panel-table-meta {
+  margin-top: 4px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  color: var(--muted) !important;
+}
+
+.checkout-page .panel-status-badge {
+  justify-self: end !important;
+  align-self: start !important;
+  margin-left: 0 !important;
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.checkout-page .panel-section-label,
+.checkout-page .split-progress-label {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(237, 230, 216, 0.46) !important;
+}
+
+.checkout-page .ov-guest-group {
+  display: grid !important;
+  gap: 8px !important;
+  padding: 12px !important;
+}
+
+.checkout-page .ov-guest-name {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.6px !important;
+  font-weight: 700 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  margin-bottom: 0 !important;
+}
+
+.checkout-page .ov-order-row {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 0 6px 2px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .ov-order-row:last-child {
+  border-bottom: none !important;
+}
+
+.checkout-page .ov-qty {
+  min-width: 26px !important;
+  height: 22px !important;
+  padding: 0 6px !important;
+  border-radius: 7px !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10.8px !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+}
+
+.checkout-page .ov-oname,
+.checkout-page .ov-note,
+.checkout-page .orders-empty,
+.checkout-page .confirm-message,
+.checkout-page .amount-label,
+.checkout-page .panel-warning,
+.checkout-page .panel-warning * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .ov-oname {
+  min-width: 0 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.checkout-page .ov-price {
+  justify-self: end !important;
+  white-space: nowrap !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  color: var(--gold-dim) !important;
+}
+
+.checkout-page .panel-total-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  padding: 12px 0 2px !important;
+  border-top: 1px solid rgba(197, 161, 91, 0.14) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-total-row > span:first-child,
+.checkout-page .amount-label {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+
+.checkout-page .panel-total-amount,
+.checkout-page .amount-value {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--gold) !important;
+}
+
+.checkout-page .modal-container,
+.checkout-page .modal-container * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .modal-header h2 {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+  font-size: 24px !important;
+  font-weight: 650 !important;
+  color: var(--cream) !important;
+}
+
+.checkout-page .modal-header p {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  color: var(--muted) !important;
+}
+
+@media (max-width: 980px) {
+  .checkout-page .checkout-info-panel.open {
+    width: 100% !important;
+  }
+}
+
+/* ============================================================
+   FINAL SSU15 + WAITER ANALYTICS POLISH
+   Split payment is readable and functional; checkout typography matches
+   transfer/map panels; performance and shift history reuse owner analytics layout.
+   ============================================================ */
+.checkout-page .checkout-info-panel.open {
+  width: clamp(390px, 32vw, 460px) !important;
+}
+
+.checkout-page .checkout-info-panel,
+.checkout-page .checkout-info-panel * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-table-badge,
+.checkout-page .panel-table-name,
+.checkout-page .panel-total-amount,
+.checkout-page .amount-value,
+.checkout-page .split-mode-label,
+.checkout-page .modal-header h2 {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+.checkout-page .panel-table-name {
+  font-size: 22px !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.checkout-page .panel-table-meta,
+.checkout-page .panel-section-label,
+.checkout-page .ov-guest-name,
+.checkout-page .ov-oname,
+.checkout-page .ov-note,
+.checkout-page .ov-price,
+.checkout-page .panel-total-row,
+.checkout-page .panel-warning,
+.checkout-page .panel-actions button,
+.checkout-page .split-progress-label,
+.checkout-page .split-progress-topline strong,
+.checkout-page .checkout-split-item-row,
+.checkout-page .checkout-split-card-footer {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .panel-orders-list {
+  width: 100% !important;
+  max-height: min(440px, 44vh) !important;
+  padding-right: 4px !important;
+  gap: 12px !important;
+}
+
+.checkout-page .ov-guest-group {
+  padding: 14px !important;
+}
+
+.checkout-page .ov-order-row,
+.checkout-page .checkout-split-item-row {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 32px !important;
+}
+
+.checkout-page .checkout-split-guest-list {
+  max-height: min(440px, 44vh) !important;
+  overflow-y: auto !important;
+  padding-right: 4px !important;
+}
+
+.checkout-page .checkout-split-guest-card {
+  padding: 14px !important;
+  gap: 12px !important;
+}
+
+.checkout-page .checkout-split-item-list {
+  display: grid !important;
+  gap: 4px !important;
+  padding: 8px 0 2px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.045) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045) !important;
+}
+
+.checkout-page .checkout-split-card-footer {
+  display: grid !important;
+  grid-template-columns: auto minmax(150px, 1fr) !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.checkout-page .checkout-split-card-footer .ov-guest-status {
+  justify-self: start !important;
+}
+
+.checkout-page .checkout-split-card-footer .split-pay-btn {
+  justify-self: stretch !important;
+}
+
+.checkout-page .split-progress-topline {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.checkout-page .split-progress-topline > div {
+  padding: 10px 12px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(197, 161, 91, 0.12) !important;
+  background: rgba(255, 255, 255, 0.026) !important;
+}
+
+.checkout-page .split-progress-topline strong {
+  display: block !important;
+  margin-top: 4px !important;
+  color: var(--gold) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.checkout-page .panel-btn-primary:disabled {
+  opacity: 0.42 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 980px) {
+  .checkout-page .checkout-info-panel.open {
+    width: 100% !important;
+  }
+}
+
+/* Waiter analytics screens rebuilt on owner analytics visual system. */
+.waiter-analytics-page {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.waiter-analytics-page .map-title h1,
+.waiter-analytics-page .chart-title {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+.waiter-analytics-header {
+  margin-bottom: 20px !important;
+}
+
+.waiter-analytics-scroll {
+  display: block !important;
+  padding-right: 4px !important;
+}
+
+.waiter-analytics-page .kpi-grid {
+  grid-template-columns: repeat(4, minmax(180px, 1fr)) !important;
+}
+
+.waiter-analytics-row {
+  align-items: stretch !important;
+}
+
+.waiter-analytics-page .chart-card {
+  min-height: 0 !important;
+}
+
+.waiter-current-session-card,
+.waiter-analytics-table-card {
+  overflow: hidden !important;
+}
+
+.waiter-session-list {
+  max-height: 360px !important;
+  overflow-y: auto !important;
+  display: grid !important;
+  gap: 12px !important;
+}
+
+.waiter-session-row {
+  grid-template-columns: 38px minmax(0, 1fr) !important;
+}
+
+.waiter-analytics-table-wrap {
+  overflow-x: auto !important;
+  padding-bottom: 2px !important;
+}
+
+.waiter-analytics-table {
+  width: 100% !important;
+  min-width: 760px !important;
+  border-collapse: separate !important;
+  border-spacing: 0 8px !important;
+}
+
+.waiter-analytics-table th {
+  padding: 0 14px 8px !important;
+  text-align: left !important;
+  color: rgba(237, 230, 216, 0.42) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+}
+
+.waiter-analytics-table td {
+  padding: 14px !important;
+  color: rgba(237, 230, 216, 0.76) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12.5px !important;
+  border-top: 1px solid rgba(197, 161, 91, 0.10) !important;
+  border-bottom: 1px solid rgba(197, 161, 91, 0.10) !important;
+  background: rgba(255, 255, 255, 0.026) !important;
+}
+
+.waiter-analytics-table td:first-child {
+  border-left: 1px solid rgba(197, 161, 91, 0.10) !important;
+  border-radius: 15px 0 0 15px !important;
+  color: var(--gold) !important;
+  font-weight: 700 !important;
+}
+
+.waiter-analytics-table td:last-child {
+  border-right: 1px solid rgba(197, 161, 91, 0.10) !important;
+  border-radius: 0 15px 15px 0 !important;
+}
+
+.waiter-analytics-table tr:hover td {
+  border-color: rgba(197, 161, 91, 0.24) !important;
+  background: rgba(197, 161, 91, 0.055) !important;
+}
+
+.waiter-analytics-status {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 26px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(197, 161, 91, 0.18) !important;
+  background: rgba(197, 161, 91, 0.08) !important;
+  color: var(--gold) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.waiter-analytics-status.payment {
+  border-color: rgba(220, 160, 60, 0.28) !important;
+  background: rgba(220, 160, 60, 0.10) !important;
+  color: #DCA03C !important;
+}
+
+.waiter-analytics-status.reserved {
+  border-color: rgba(122, 171, 204, 0.28) !important;
+  background: rgba(122, 171, 204, 0.10) !important;
+  color: #7AABCC !important;
+}
+
+.waiter-analytics-status.rating {
+  color: #70B47A !important;
+  border-color: rgba(112, 180, 122, 0.28) !important;
+  background: rgba(112, 180, 122, 0.10) !important;
+}
+
+.waiter-static-period .period-option:not(.active) {
+  opacity: 0.68 !important;
+}
+
+@media (max-width: 1160px) {
+  .waiter-analytics-page .kpi-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr)) !important;
+  }
+
+  .waiter-analytics-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .waiter-analytics-page .kpi-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================================================
+   FINAL FIX — SSU15 split payment real selection flow + analytics font lock.
+   ============================================================ */
+.checkout-page .checkout-info-panel.open {
+  width: clamp(340px, 29vw, 410px) !important;
+}
+
+.checkout-page .checkout-info-panel,
+.checkout-page .checkout-info-panel > div:not(.info-panel-accent),
+.checkout-page .checkout-info-panel .panel-table-meta,
+.checkout-page .checkout-info-panel .panel-section-label,
+.checkout-page .checkout-info-panel .ov-guest-name,
+.checkout-page .checkout-info-panel .ov-oname,
+.checkout-page .checkout-info-panel .ov-note,
+.checkout-page .checkout-info-panel .ov-price,
+.checkout-page .checkout-info-panel .panel-total-row,
+.checkout-page .checkout-info-panel .panel-warning,
+.checkout-page .checkout-info-panel .panel-actions button,
+.checkout-page .checkout-info-panel .split-progress-label,
+.checkout-page .checkout-info-panel .split-back-btn,
+.checkout-page .checkout-info-panel .checkout-split-guest-head,
+.checkout-page .checkout-info-panel .checkout-split-guest-head strong,
+.checkout-page .checkout-info-panel .checkout-split-guest-head small,
+.checkout-page .checkout-info-panel .checkout-split-item-row,
+.checkout-page .checkout-info-panel .checkout-split-card-footer,
+.checkout-page .checkout-info-panel .partial-count-bar,
+.checkout-page .checkout-info-panel .partial-bulk-btns button {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .checkout-info-panel .panel-table-badge,
+.checkout-page .checkout-info-panel .panel-table-name,
+.checkout-page .checkout-info-panel .panel-total-amount,
+.checkout-page .checkout-info-panel .amount-value,
+.checkout-page .checkout-info-panel .split-mode-label {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+.checkout-page .checkout-info-panel .panel-table-name {
+  font-size: 22px !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.checkout-page .checkout-info-panel .panel-orders-list {
+  max-height: min(480px, 48vh) !important;
+  padding-right: 6px !important;
+}
+
+.checkout-page .checkout-split-guest-list {
+  width: 100% !important;
+  max-height: none !important;
+  display: grid !important;
+  gap: 14px !important;
+  padding-right: 0 !important;
+  overflow: visible !important;
+}
+
+.checkout-page .checkout-split-guest-card {
+  padding: 18px !important;
+  gap: 14px !important;
+}
+
+.checkout-page .checkout-split-guest-card.selected {
+  border-color: rgba(197, 161, 91, 0.42) !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(197, 161, 91, 0.15), transparent 68%),
+    rgba(197, 161, 91, 0.045) !important;
+}
+
+.checkout-page .checkout-split-guest-head {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+}
+
+.checkout-page .checkout-split-guest-head > span {
+  display: grid !important;
+  gap: 3px !important;
+  min-width: 0 !important;
+}
+
+.checkout-page .checkout-split-guest-head strong {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.checkout-page .checkout-split-guest-head small {
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  color: rgba(237, 230, 216, 0.46) !important;
+  letter-spacing: 0.03em !important;
+}
+
+.checkout-page .checkout-split-guest-head b {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  color: var(--gold) !important;
+  white-space: nowrap !important;
+}
+
+.checkout-page .checkout-split-item-list {
+  display: grid !important;
+  gap: 8px !important;
+  padding: 12px 0 4px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.checkout-page .checkout-split-item-row {
+  display: grid !important;
+  grid-template-columns: auto auto minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 44px !important;
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+  border: 1px solid transparent !important;
+  cursor: pointer !important;
+  transition: background 0.16s ease, border-color 0.16s ease, transform 0.16s ease, opacity 0.16s ease !important;
+}
+
+.checkout-page .checkout-split-item-row:hover:not(.paid) {
+  border-color: rgba(197, 161, 91, 0.18) !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  transform: translateY(-1px) !important;
+}
+
+.checkout-page .checkout-split-item-row.selected:not(.paid) {
+  border-color: rgba(197, 161, 91, 0.34) !important;
+  background: rgba(197, 161, 91, 0.08) !important;
+}
+
+.checkout-page .checkout-split-item-row.paid {
+  border-color: rgba(112, 180, 122, 0.18) !important;
+  background: rgba(112, 180, 122, 0.06) !important;
+  opacity: 0.78 !important;
+  cursor: default !important;
+}
+
+.checkout-page .checkout-split-item-row .ov-oname {
+  display: grid !important;
+  gap: 3px !important;
+  font-size: 12.8px !important;
+  font-weight: 500 !important;
+  min-width: 0 !important;
+}
+
+.checkout-page .checkout-split-item-row .ov-oname em {
+  font-style: normal !important;
+  font-size: 10.5px !important;
+  color: rgba(237, 230, 216, 0.42) !important;
+}
+
+.checkout-page .checkout-split-checkbox {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 6px !important;
+  border: 1.5px solid rgba(197, 161, 91, 0.24) !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  display: inline-grid !important;
+  place-items: center !important;
+}
+
+.checkout-page .checkout-split-checkbox:checked {
+  background: rgba(112, 180, 122, 0.20) !important;
+  border-color: rgba(112, 180, 122, 0.58) !important;
+}
+
+.checkout-page .checkout-split-checkbox:disabled {
+  opacity: 0.65 !important;
+  cursor: default !important;
+}
+
+.checkout-page .split-progress-topline {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.checkout-page .checkout-split-bulk-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 2px 0 4px !important;
+  padding: 12px 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: rgba(237, 230, 216, 0.54) !important;
+  font-size: 12px !important;
+}
+
+.checkout-page .checkout-split-actions {
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+
+.checkout-page .panel-btn-primary:disabled,
+.checkout-page .btn-modal:disabled {
+  opacity: 0.38 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.checkout-page .split-modal-lines {
+  display: grid !important;
+  gap: 8px !important;
+  max-height: 220px !important;
+  overflow-y: auto !important;
+  margin: 12px 0 !important;
+}
+
+.checkout-page .split-modal-line {
+  display: grid !important;
+  grid-template-columns: minmax(80px, 0.7fr) minmax(0, 1.2fr) auto !important;
+  gap: 10px !important;
+  align-items: center !important;
+  padding: 9px 10px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(197, 161, 91, 0.10) !important;
+  background: rgba(255, 255, 255, 0.025) !important;
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.checkout-page .split-modal-line span {
+  color: rgba(237, 230, 216, 0.48) !important;
+  font-size: 11px !important;
+}
+
+.checkout-page .split-modal-line strong {
+  color: rgba(237, 230, 216, 0.82) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.checkout-page .split-modal-line b {
+  color: var(--gold) !important;
+  font-size: 11.5px !important;
+  white-space: nowrap !important;
+}
+
+.waiter-analytics-page,
+.waiter-analytics-page * {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.waiter-analytics-page .map-title h1,
+.waiter-analytics-page .chart-title,
+.waiter-analytics-page .top-items-header strong,
+.waiter-analytics-page .kpi-value {
+  font-family: var(--font-display, "Cormorant Garamond", serif) !important;
+}
+
+.waiter-analytics-page .map-title h1 {
+  font-size: clamp(26px, 3vw, 36px) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.waiter-analytics-page .map-title p,
+.waiter-analytics-page .kpi-title,
+.waiter-analytics-page .kpi-trend,
+.waiter-analytics-page .chart-header p,
+.waiter-analytics-page .revenue-chart-summary span,
+.waiter-analytics-page .revenue-y-label,
+.waiter-analytics-page .revenue-x-label,
+.waiter-analytics-page .top-item-title-row,
+.waiter-analytics-page .top-item-meta,
+.waiter-analytics-page .waiter-analytics-table,
+.waiter-analytics-page .waiter-analytics-table th,
+.waiter-analytics-page .waiter-analytics-table td,
+.waiter-analytics-page .period-option,
+.waiter-analytics-page .waiter-live-chip {
+  font-family: var(--font-body, "Jost", sans-serif) !important;
+}
+
+.waiter-analytics-page .kpi-value {
+  font-size: clamp(26px, 2.6vw, 34px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.035em !important;
+  color: rgba(237, 230, 216, 0.96) !important;
+}
+
+.waiter-analytics-page .chart-title,
+.waiter-analytics-page .top-items-header strong {
+  font-size: 20px !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.waiter-analytics-page .waiter-analytics-table th {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.waiter-analytics-page .waiter-analytics-table td {
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+}
+
+/* Shared UI adoption: keep waiter layout intact while using src/shared/ui buttons/badges. */
+.waiter-orders-page .card-actions .btn-glass,
+.waiter-orders-page .reject-actions .btn-glass,
+.waiter-orders-page .partial-confirm-actions .btn-glass {
+  flex: 1;
+}
+
+.waiter-orders-page .item-row .btn-glass.compact {
+  min-width: 34px;
+  padding-inline: 10px;
+}
+
+.manual-order-page .cart-footer .btn-glass.full-w,
+.waiter-map-panel-actions .btn-glass.full-w,
+.table-transfer-page .panel-actions .btn-glass.full-w,
+.checkout-page .panel-actions .btn-glass.full-w {
+  min-height: 44px;
+}
+
+.waiter-map-panel-actions .btn-glass.align-start {
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+}
+
+.checkout-page .checkout-info-panel .partial-bulk-btns .btn-glass.compact,
+.waiter-static-period .btn-glass.compact {
+  min-height: 32px;
+}
+
+.manual-order-page .qty-controls .action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+}
+
+
+/* Waiter map/manual flow: manual entry is a top toolbar action, not a sidebar entry. */
+.waiter-map-toolbar {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.waiter-map-manual-btn.btn-glass {
+  min-height: 46px !important;
+  padding-inline: 22px !important;
+  border-radius: 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 750 !important;
+}
+
+.waiter-map-manual-btn.btn-glass span {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+.waiter-map-stat-pills {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .waiter-map-toolbar {
+    width: 100%;
+    justify-content: space-between !important;
+  }
+
+  .waiter-map-stat-pills {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .waiter-map-toolbar {
+    align-items: flex-start !important;
+  }
+
+  .waiter-map-stat-pills {
+    width: 100%;
+  }
+
+  .waiter-map-manual-btn.btn-glass {
+    margin-left: auto;
+  }
+}
+
+.manual-order-page .manual-toolbar-actions {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.manual-order-page .manual-context-block {
+  align-items: flex-end !important;
+}
+
+/* FINAL WAITER POLISH — sidebar cancel action as X + partial/split choice tone. */
+.info-panel > div:not(.info-panel-accent),
+.waiter-slide-panel > div:not(.info-panel-accent),
+.waiter-map-info-panel > .waiter-map-panel-content,
+.info-panel.waiter-map-info-panel > div.waiter-map-panel-content,
+.manual-order-page .cart-panel,
+.checkout-page .checkout-info-panel > div:not(.info-panel-accent),
+.table-transfer-page .info-panel > div:not(.info-panel-accent) {
+  position: relative !important;
+}
+
+.info-panel .panel-close-btn,
+.waiter-slide-panel .panel-close-btn,
+.waiter-map-info-panel .panel-close-btn,
+.manual-order-page .cart-panel .panel-close-btn,
+.checkout-page .checkout-info-panel .panel-close-btn,
+.table-transfer-page .panel-close-btn {
+  position: absolute !important;
+  top: 14px !important;
+  right: 14px !important;
+  z-index: 8 !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 999px !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  color: rgba(237, 230, 216, 0.70) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.08), 0 8px 18px rgba(0, 0, 0, 0.18) !important;
+}
+
+.info-panel .panel-close-btn:hover,
+.waiter-slide-panel .panel-close-btn:hover,
+.waiter-map-info-panel .panel-close-btn:hover,
+.manual-order-page .cart-panel .panel-close-btn:hover,
+.checkout-page .checkout-info-panel .panel-close-btn:hover,
+.table-transfer-page .panel-close-btn:hover {
+  color: var(--partial-gold) !important;
+  background: rgba(217, 189, 120, 0.11) !important;
+  border-color: rgba(217, 189, 120, 0.30) !important;
+}
+
+.info-panel .panel-close-btn + .panel-table-header,
+.waiter-slide-panel .panel-close-btn + .panel-table-header,
+.waiter-map-info-panel .panel-close-btn + .panel-table-header,
+.checkout-page .checkout-info-panel .panel-close-btn + .panel-table-header,
+.table-transfer-page .panel-close-btn + .panel-table-header,
+.manual-order-page .cart-panel .panel-close-btn + .cart-header {
+  padding-right: 44px !important;
+}
+
+.waiter-panel-choice-btn.btn-glass,
+.checkout-page .waiter-panel-choice-btn.btn-glass,
+.table-transfer-page .waiter-panel-choice-btn.btn-glass {
+  min-height: 44px !important;
+  padding: 12px 16px !important;
+  border-radius: 13px !important;
+  border-color: rgba(217, 189, 120, 0.38) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(217, 189, 120, 0.20) 0%, rgba(217, 189, 120, 0.09) 48%, rgba(217, 189, 120, 0.035) 100%) !important;
+  color: var(--partial-gold) !important;
+  font-size: 12.8px !important;
+  font-weight: 650 !important;
+  box-shadow:
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.10),
+    0 8px 18px rgba(0, 0, 0, 0.16) !important;
+}
+
+.waiter-panel-choice-btn.btn-glass:hover:not(:disabled),
+.checkout-page .waiter-panel-choice-btn.btn-glass:hover:not(:disabled),
+.table-transfer-page .waiter-panel-choice-btn.btn-glass:hover:not(:disabled) {
+  border-color: rgba(217, 189, 120, 0.54) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(217, 189, 120, 0.26) 0%, rgba(217, 189, 120, 0.12) 48%, rgba(217, 189, 120, 0.045) 100%) !important;
+  color: rgba(237, 230, 216, 0.92) !important;
+}
+
+.checkout-page .checkout-split-guest-card.selected,
+.checkout-page .checkout-split-item-row.selected:not(.paid) {
+  border-color: rgba(217, 189, 120, 0.42) !important;
+  background: rgba(217, 189, 120, 0.08) !important;
+}
+
+.checkout-page .checkout-split-checkbox,
+.table-transfer-page .waiter-transfer-guest-card input[type="checkbox"] {
+  accent-color: var(--partial-gold) !important;
+}
+
+.checkout-page .checkout-split-checkbox:checked {
+  background: rgba(217, 189, 120, 0.20) !important;
+  border-color: rgba(217, 189, 120, 0.58) !important;
+}
+
+/* FINAL WAITER ADDON — glass counters + restored manual category dropdown only. */
+.waiter-orders-page .waiter-pending-counter-row {
+  align-items: center !important;
+}
+
+.waiter-orders-page .waiter-pending-counter-badge.glass-badge {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+.manual-order-page .manual-menu-toolbar-card {
+  position: relative !important;
+  z-index: 70 !important;
+  padding: 16px 18px !important;
+  overflow: visible !important;
+}
+
+.manual-order-page .manual-menu-filters {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.manual-order-page .manual-menu-filters .search-wrapper {
+  flex: 1 1 360px !important;
+  min-width: 240px !important;
+}
+
+.manual-order-page .manual-category-dropdown-wrap {
+  flex: 0 1 260px !important;
+  min-width: 220px !important;
+  position: relative !important;
+  z-index: 90 !important;
+}
+
+.manual-order-page .manual-category-dropdown,
+.manual-order-page .manual-category-dropdown .kat-dropdown-container {
+  width: 100% !important;
+}
+
+.manual-order-page .manual-category-trigger.category-filter-trigger {
+  min-height: 44px !important;
+  border-color: rgba(197, 161, 91, 0.25) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.045) 40%, rgba(255, 255, 255, 0.02) 100%) !important;
+  color: rgba(237, 230, 216, 0.78) !important;
+}
+
+.manual-order-page .manual-category-dropdown .kat-dropdown-list {
+  z-index: 9000 !important;
+  max-height: min(280px, calc(100dvh - 260px)) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+}
+
+.manual-order-page .menu-items-scroll {
+  position: relative !important;
+  z-index: 1 !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+}
+
+@media (max-width: 920px) {
+  .manual-order-page .manual-menu-filters {
+    align-items: stretch !important;
+  }
+
+  .manual-order-page .manual-menu-filters .search-wrapper,
+  .manual-order-page .manual-category-dropdown-wrap {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+.checkout-page .checkout-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.55rem, 0.9vw, 0.75rem);
+  width: 100%;
+}
+
+.checkout-page .checkout-payment-flow-actions {
+  gap: clamp(0.75rem, 1vw, 0.95rem);
+}
+
+@media (max-width: 900px) {
+  .checkout-page .checkout-choice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FINAL CHECKOUT PAYMENT CHOICES — clearer active state and cleaner spacing. */
+.checkout-page .checkout-payment-flow-actions {
+  display: grid !important;
+  gap: 16px !important;
+}
+
+.checkout-page .checkout-choice-section {
+  display: grid !important;
+  gap: 9px !important;
+}
+
+.checkout-page .checkout-choice-section + .checkout-choice-section {
+  padding-top: 4px !important;
+}
+
+.checkout-page .checkout-choice-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
+
+.checkout-page .checkout-choice-grid .waiter-panel-choice-btn.btn-glass {
+  min-height: 46px !important;
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    background 0.16s ease,
+    color 0.16s ease,
+    box-shadow 0.16s ease,
+    opacity 0.16s ease !important;
+}
+
+.checkout-page .checkout-choice-grid .waiter-panel-choice-btn.is-unselected.btn-glass:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.10) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.035) 48%, rgba(255, 255, 255, 0.015) 100%) !important;
+  color: rgba(237, 230, 216, 0.58) !important;
+  box-shadow:
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.06),
+    0 6px 14px rgba(0, 0, 0, 0.12) !important;
+}
+
+.checkout-page .checkout-choice-grid .waiter-panel-choice-btn.is-selected.btn-glass:not(:disabled) {
+  border-color: rgba(217, 189, 120, 0.68) !important;
+  background:
+    radial-gradient(ellipse 120% 110% at 50% 0%, rgba(217, 189, 120, 0.36) 0%, rgba(217, 189, 120, 0.18) 45%, rgba(217, 189, 120, 0.07) 100%) !important;
+  color: rgba(237, 230, 216, 0.96) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    inset 0 -10px 22px rgba(0, 0, 0, 0.20),
+    0 0 0 1px rgba(217, 189, 120, 0.14),
+    0 10px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+.checkout-page .checkout-choice-grid .waiter-panel-choice-btn.is-selected.btn-glass::after {
+  content: "✓";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 800;
+  color: rgba(17, 16, 14, 0.92);
+  background: var(--partial-gold);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+.checkout-page .checkout-choice-grid .waiter-panel-choice-btn.is-unselected.btn-glass:hover:not(:disabled) {
+  border-color: rgba(217, 189, 120, 0.34) !important;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(217, 189, 120, 0.14) 0%, rgba(217, 189, 120, 0.07) 48%, rgba(217, 189, 120, 0.025) 100%) !important;
+  color: rgba(237, 230, 216, 0.78) !important;
+}
+
+.checkout-page .checkout-choice-grid .waiter-panel-choice-btn.btn-glass:disabled {
+  opacity: 0.38 !important;
+  filter: grayscale(0.18) !important;
+}
+
+@media (max-width: 900px) {
+  .checkout-page .checkout-choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================================================
+   HOTFIX — manual order scroll restoration.
+   Keep the existing design; only re-enable the scroll islands for the
+   menu list, category dropdown and temporary cart/sidebar.
+   ============================================================ */
+.manual-order-page .step-menu {
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.manual-order-page .menu-panel,
+.manual-order-page .cart-panel {
+  min-height: 0 !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+.manual-order-page .menu-panel {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.manual-order-page .manual-menu-toolbar-card {
+  flex-shrink: 0 !important;
+  overflow: visible !important;
+}
+
+.manual-order-page .menu-items-scroll {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+}
+
+.manual-order-page .cart-header,
+.manual-order-page .cart-footer,
+.manual-order-page .cart-divider {
+  flex-shrink: 0 !important;
+}
+
+.manual-order-page .cart-items {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+}
+
+.manual-order-page .manual-category-dropdown-wrap,
+.manual-order-page .manual-category-dropdown,
+.manual-order-page .manual-category-dropdown.kat-dropdown-container {
+  overflow: visible !important;
+}
+
+.manual-order-page .manual-category-dropdown .kat-dropdown-list,
+.manual-order-page .manual-category-dropdown.kat-dropdown-container > .kat-dropdown-list {
+  max-height: min(280px, 42vh) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Waiter live refresh and local notifications. */
+.manual-order-page .menu-item-card {
+  min-height: 246px !important;
+}
+
+.manual-menu-item-image {
+  position: relative;
+  height: 94px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 161, 91, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.manual-menu-item-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.manual-menu-item-image-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(197, 161, 91, 0.78);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.manual-menu-item-category {
+  margin-top: auto;
+  color: rgba(197, 161, 91, 0.78);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sidebar__notifications {
+  position: relative;
+  padding: 0 var(--pad-x) 12px;
+}
+
+.waiter-notification-bell {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid rgba(197, 161, 91, 0.18);
+  border-radius: 8px;
+  background: rgba(197, 161, 91, 0.08);
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.waiter-notification-bell-icon {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(197, 161, 91, 0.16);
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.waiter-notification-bell b {
+  margin-left: auto;
+  min-width: 22px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #dca03c;
+  color: #17120d;
+  font-size: 11px;
+}
+
+.waiter-notification-panel {
+  position: absolute;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  top: 46px;
+  z-index: 30;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid rgba(197, 161, 91, 0.26);
+  border-radius: 8px;
+  background: rgba(17, 15, 12, 0.98);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
+}
+
+.waiter-notification-panel-head,
+.waiter-notification-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.waiter-notification-panel-head {
+  justify-content: space-between;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.waiter-notification-panel-head button {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.waiter-notification-item {
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--cream);
+  cursor: pointer;
+  text-align: left;
+}
+
+.waiter-notification-item.unread {
+  border-color: rgba(197, 161, 91, 0.32);
+  background: rgba(197, 161, 91, 0.09);
+}
+
+.waiter-notification-item.payment.unread {
+  border-color: rgba(220, 160, 60, 0.5);
+}
+
+.waiter-notification-type {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: rgba(197, 161, 91, 0.16);
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.waiter-notification-item.payment .waiter-notification-type {
+  background: rgba(220, 160, 60, 0.18);
+  color: #f4c66c;
+}
+
+.waiter-notification-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.waiter-notification-copy strong,
+.waiter-notification-copy small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.waiter-notification-copy strong {
+  font-size: 12px;
+}
+
+.waiter-notification-copy small,
+.waiter-notification-item time,
+.waiter-notification-empty {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 10.5px;
+}
+
+.waiter-live-alert {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 100;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 161, 91, 0.36);
+  background: rgba(21, 18, 14, 0.96);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48);
+}
+
+.waiter-live-alert.payment {
+  border-color: rgba(220, 160, 60, 0.56);
+}
+
+.waiter-live-alert-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(197, 161, 91, 0.16);
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.waiter-live-alert.payment .waiter-live-alert-icon {
+  background: rgba(220, 160, 60, 0.2);
+  color: #f4c66c;
+}
+
+.waiter-live-alert-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.waiter-live-alert-copy strong,
+.waiter-live-alert-copy span {
+  display: block;
+}
+
+.waiter-live-alert-copy strong {
+  color: var(--cream);
+  font-size: 14px;
+}
+
+.waiter-live-alert-copy span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 12px;
+}
+
+.waiter-live-alert button {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.66);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+@media (max-width: 760px) {
+  .waiter-live-alert {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    min-width: 0;
+  }
+}
+
+/* ============================================================
+   FINAL STATS SOURCE SYNC + VIEWPORT-LOCKED LOGIN
+   ============================================================ */
+
+.waiter-performance-period-controls {
+  width: min(520px, 48vw);
+  display: grid;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.waiter-performance-period-slider {
+  width: 100%;
+}
+
+.waiter-performance-period-slider .segmented-slider-option {
+  padding-inline: clamp(8px, 1vw, 14px);
+}
+
+.waiter-performance-custom-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.waiter-performance-custom-dates .glass-date-picker {
+  min-width: 0;
+}
+
+.waiter-shift-period-slider.segmented-slider {
+  width: min(340px, 42vw);
+}
+
+.waiter-shift-period-slider .segmented-slider-option {
+  min-width: 0;
+}
+
+.page.opentab-login-page {
+  --login-page-padding-y: clamp(8px, 1.5vh, 20px);
+  --login-page-padding-x: clamp(8px, 1.8vw, 28px);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  padding: var(--login-page-padding-y) var(--login-page-padding-x);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page.opentab-login-page .card.opentab-login-card {
+  width: min(1200px, 100%);
+  height: calc(100dvh - (2 * var(--login-page-padding-y)));
+  min-height: 0;
+  max-height: 720px;
+  grid-template-columns: clamp(300px, 42%, 500px) minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.page.opentab-login-page .form-panel.opentab-login-form {
+  min-width: 0;
+  min-height: 0;
+  gap: clamp(8px, 1.5vh, 20px);
+  padding: clamp(16px, 3.4vh, 40px) clamp(24px, 3.6vw, 56px);
+  overflow: hidden;
+}
+
+.page.opentab-login-page .form-body.opentab-login-body {
+  min-height: 0;
+  justify-content: center;
+}
+
+.page.opentab-login-page .greeting {
+  margin: 0 0 clamp(4px, 0.8vh, 10px);
+  font-size: clamp(28px, 3vw, 46px) !important;
+  line-height: 1.02 !important;
+}
+
+.page.opentab-login-page .subtitle {
+  margin: 0 0 clamp(10px, 2vh, 24px);
+  font-size: clamp(11px, 0.9vw, 14px) !important;
+  line-height: 1.5 !important;
+}
+
+.page.opentab-login-page .fields {
+  gap: clamp(7px, 1vh, 12px);
+  margin-bottom: 0;
+}
+
+.page.opentab-login-page .field input {
+  min-height: clamp(38px, 5.2vh, 48px);
+  padding: clamp(8px, 1.1vh, 13px) clamp(13px, 1.2vw, 18px);
+}
+
+.page.opentab-login-page .opentab-login-error {
+  display: block;
+  min-height: 16px;
+  margin: clamp(2px, 0.45vh, 5px) 0 0;
+  visibility: hidden;
+  font-size: clamp(10px, 0.72vw, 12px);
+  line-height: 1.25;
+}
+
+.page.opentab-login-page .opentab-login-error.visible {
+  visibility: visible;
+}
+
+.page.opentab-login-page .forgot {
+  margin-top: clamp(2px, 0.45vh, 6px);
+  margin-bottom: clamp(7px, 1.2vh, 16px);
+}
+
+.page.opentab-login-page .login-role-actions {
+  gap: clamp(6px, 0.9vh, 10px);
+  margin-top: 0;
+}
+
+.page.opentab-login-page .login-role-actions .btn-glass {
+  min-height: clamp(36px, 5vh, 44px);
+  padding-block: clamp(8px, 1vh, 11px);
+  font-size: clamp(12px, 1vw, 15px);
+}
+
+.page.opentab-login-page .divider {
+  margin: clamp(5px, 0.9vh, 11px) 0;
+}
+
+.page.opentab-login-page .footer-note {
+  margin-top: auto;
+  padding-top: clamp(3px, 0.6vh, 8px);
+  font-size: clamp(9.5px, 0.64vw, 11.5px) !important;
+  line-height: 1.45 !important;
+}
+
+.page.opentab-login-page .image-badge {
+  bottom: clamp(14px, 2.5vh, 30px);
+  padding: clamp(12px, 2vh, 22px) clamp(15px, 1.8vw, 26px);
+}
+
+@media (max-height: 760px) {
+  .page.opentab-login-page {
+    --login-page-padding-y: clamp(6px, 1vh, 10px);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page.opentab-login-page .card.opentab-login-card {
+    height: calc(100dvh - (2 * var(--login-page-padding-y)));
+    min-height: 0;
+  }
+
+  .page.opentab-login-page .form-panel.opentab-login-form {
+    gap: clamp(6px, 1vh, 10px);
+    padding: clamp(12px, 2.2vh, 20px) clamp(22px, 3vw, 42px);
+  }
+
+  .page.opentab-login-page .form-body.opentab-login-body {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .page.opentab-login-page .greeting {
+    font-size: clamp(27px, 3.1vw, 38px) !important;
+  }
+
+  .page.opentab-login-page .subtitle {
+    margin-bottom: clamp(7px, 1.2vh, 12px);
+    line-height: 1.4 !important;
+  }
+
+  .page.opentab-login-page .footer-note {
+    line-height: 1.35 !important;
+  }
+}
+
+@media (max-height: 620px), (max-width: 860px) {
+.page.opentab-login-page {
+    --login-page-padding-y: 6px;
+    --login-page-padding-x: clamp(6px, 2vw, 16px);
+  }
+
+  .page.opentab-login-page .card.opentab-login-card {
+    width: min(520px, 100%);
+    max-height: none;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .page.opentab-login-page .form-panel.opentab-login-form {
+    height: 100%;
+    padding: clamp(10px, 2vh, 16px) clamp(20px, 4vw, 34px);
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .page.opentab-login-page .image-panel.opentab-login-image {
+    display: none;
+  }
+
+  .page.opentab-login-page .brand.opentab-login-brand {
+    font-size: clamp(14px, 2vw, 17px) !important;
+  }
+
+  .page.opentab-login-page .greeting {
+    font-size: clamp(27px, 5vh, 34px) !important;
+  }
+
+  .page.opentab-login-page .subtitle {
+    max-width: 42ch;
+    font-size: clamp(10.5px, 1.8vh, 12.5px) !important;
+  }
+}
+
+@media (max-height: 520px) {
+  .page.opentab-login-page .form-panel.opentab-login-form {
+    gap: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .page.opentab-login-page .greeting {
+    font-size: clamp(25px, 5.4vh, 30px) !important;
+  }
+
+  .page.opentab-login-page .subtitle {
+    margin-bottom: 6px;
+    line-height: 1.3 !important;
+  }
+
+  .page.opentab-login-page .field input {
+    min-height: 34px;
+    padding-block: 7px;
+  }
+
+  .page.opentab-login-page .opentab-login-error {
+    min-height: 14px;
+  }
+
+  .page.opentab-login-page .forgot {
+    margin-top: 1px;
+    margin-bottom: 5px;
+  }
+
+  .page.opentab-login-page .login-role-actions .btn-glass {
+    min-height: 34px;
+    padding-block: 7px;
+  }
+
+  .page.opentab-login-page .divider {
+    margin: 4px 0;
+  }
+
+  .page.opentab-login-page .footer-note {
+    padding-top: 2px;
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .waiter-performance-period-controls {
+    width: min(100%, 520px);
+  }
+}
+
+@media (max-width: 720px) {
+  .waiter-performance-period-controls,
+  .waiter-shift-period-slider.segmented-slider {
+    width: 100%;
+  }
+
+  .waiter-performance-custom-dates {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.opentab-login-active {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Final merge fix: shift history header and reservation approvals */
+.waiter-shifts-dashboard .dashboard-header-row {
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+}
+
+.waiter-shifts-dashboard .map-title {
+  min-width: min(100%, 360px) !important;
+}
+
+.waiter-shift-period-slider.segmented-slider {
+  width: min(340px, 42vw) !important;
+  max-width: 100% !important;
+  flex: 0 1 340px !important;
+}
+
+.waiter-shift-period-slider .segmented-slider-option {
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}
+
+.waiter-reservation-approval-panel {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 28px;
+  border: 1px solid rgba(216, 184, 106, 0.14);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(216, 184, 106, 0.12), transparent 44%),
+    linear-gradient(145deg, rgba(255, 245, 232, 0.074), rgba(255, 245, 232, 0.026));
+  box-shadow: var(--glass-shadow, 0 24px 52px rgba(0, 0, 0, 0.22));
+}
+
+.waiter-reservation-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.waiter-reservation-panel-head h2 {
+  margin: 6px 0 0;
+  color: var(--cream, #fff4df);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.02;
+}
+
+.waiter-reservation-list {
+  display: grid;
+  gap: 10px;
+}
+
+.waiter-reservation-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 235, 215, 0.09);
+  background: rgba(255, 245, 232, 0.045);
+}
+
+.waiter-reservation-main {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.waiter-reservation-main strong {
+  color: var(--cream, #fff4df);
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.waiter-reservation-main span,
+.waiter-reservation-main small {
+  color: var(--muted, rgba(255, 245, 232, 0.64));
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.waiter-reservation-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 820px) {
+  .waiter-reservation-card {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .waiter-reservation-actions {
+    grid-column: 1 / -1;
+    justify-content: stretch;
+  }
+
+  .waiter-reservation-actions .glass-button {
+    flex: 1 1 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .waiter-shift-period-slider.segmented-slider {
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
