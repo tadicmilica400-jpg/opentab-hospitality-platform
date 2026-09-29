@@ -1,0 +1,2540 @@
+/* ─────────── SSU1-5 screens: Ivana Mušikić 2023/0204 ─────────── */
+
+/* Zajednički layout za Ivanine SSU1-5 ekrane */
+.ssu-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 92px var(--shell-x) 156px;
+}
+
+/* Profil kada postoji standardni header */
+.screen.ssu-profile-screen.ssu-screen {
+  padding-top: 130px !important;
+}
+
+/* Entry profil bez headera — mora biti jači selector od prethodnog */
+.screen.ssu-profile-screen.ssu-screen.ssu-entry-profile-screen {
+  justify-content: flex-start;
+  gap: 18px;
+  padding-top: 54px !important;
+}
+
+/* Zajednička kartica */
+.ssu-card {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 15px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 235, 215, 0.1);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(240, 211, 138, 0.12), transparent 42%),
+    linear-gradient(145deg, rgba(255, 245, 232, 0.085), rgba(255, 245, 232, 0.026));
+  box-shadow: var(--glass-highlight), 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+/* Header za login/register/scan ekrane */
+.ssu-auth-head {
+  display: block;
+  margin: 10px 2px 18px;
+}
+
+.ssu-auth-head .eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ssu-auth-head h1 {
+  margin: 0;
+  max-width: 310px;
+  color: var(--text-primary);
+  font-size: 31px;
+  line-height: 1.02;
+  letter-spacing: -0.9px;
+}
+
+.ssu-auth-head p:not(.eyebrow) {
+  margin: 10px 0 0;
+  max-width: 310px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Forma */
+.ssu-form-group {
+  margin-bottom: 13px;
+}
+
+.ssu-label {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.ssu-input {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  background: rgba(255, 245, 232, 0.052);
+  color: var(--text-primary);
+  font: inherit;
+  outline: none;
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-input::placeholder {
+  color: var(--text-muted);
+}
+
+.ssu-input:focus {
+  border-color: rgba(216, 184, 106, 0.34);
+  background: rgba(255, 245, 232, 0.075);
+}
+
+.ssu-input:disabled {
+  opacity: 0.72;
+  color: var(--text-secondary);
+}
+
+.ssu-main-action {
+  margin-top: 6px;
+}
+
+.ssu-link-button {
+  width: 100%;
+  margin-top: 11px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--gold-light);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.ssu-link-button.muted {
+  color: var(--text-muted);
+}
+
+/* SSU1 register */
+.ssu-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ssu-register-screen .ssu-auth-head {
+  margin-bottom: 14px;
+}
+
+.ssu-register-screen .ssu-auth-head h1 {
+  max-width: 310px;
+  font-size: 28px;
+}
+
+.ssu-register-screen .ssu-card {
+  padding: 14px;
+}
+
+.ssu-register-screen .ssu-form-group {
+  margin-bottom: 10px;
+}
+
+.ssu-register-screen .ssu-input {
+  min-height: 44px;
+}
+
+/* SSU2 profil */
+.ssu-profile-screen {
+  gap: 13px;
+}
+
+.ssu-profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 16px;
+  border-radius: 28px;
+}
+
+.ssu-profile-avatar {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  color: var(--gold-light);
+  font-size: 20px;
+  font-weight: 900;
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.25), transparent 50%),
+    linear-gradient(145deg, rgba(216, 184, 106, 0.18), rgba(255, 245, 232, 0.045));
+  border: 1px solid rgba(216, 184, 106, 0.18);
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-profile-main {
+  min-width: 0;
+}
+
+.ssu-profile-main h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 23px;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.ssu-profile-main p:not(.eyebrow) {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* Gostujući prikaz profila */
+.ssu-guest-profile-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 16px;
+  border-radius: 28px;
+}
+
+.ssu-guest-profile-card .ssu-profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 21px;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+.ssu-guest-profile-content {
+  min-width: 0;
+}
+
+.ssu-guest-profile-content h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 22px;
+  line-height: 1.08;
+  letter-spacing: -0.6px;
+}
+
+.ssu-guest-profile-content p:not(.eyebrow) {
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.38;
+}
+
+/* Kompaktni entry profil */
+.ssu-guest-profile-card.compact {
+  align-items: center;
+  padding: 18px;
+}
+
+.ssu-guest-profile-card.compact .ssu-profile-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 22px;
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.ssu-guest-profile-card.compact .ssu-guest-profile-content h1 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.08;
+}
+
+.ssu-entry-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.ssu-entry-action-button {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 245, 232, 0.052);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 850;
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-entry-action-button.muted {
+  color: var(--text-secondary);
+}
+
+/* Statistika profila */
+.ssu-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.ssu-stat-card {
+  padding: 13px 8px;
+  border-radius: 22px;
+  text-align: center;
+}
+
+.ssu-stat-card span {
+  display: block;
+  color: var(--gold-light);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.ssu-stat-card p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Sekcije i akcije */
+.ssu-section-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ssu-section-title h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  letter-spacing: -0.3px;
+}
+
+.ssu-small-button {
+  padding: 8px 12px;
+  border: 1px solid rgba(216, 184, 106, 0.18);
+  border-radius: 999px;
+  background: rgba(216, 184, 106, 0.1);
+  color: var(--gold-light);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ssu-action-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.ssu-secondary-button {
+  min-height: 48px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 245, 232, 0.045);
+  color: var(--text-secondary);
+  font: inherit;
+  font-weight: 800;
+}
+
+.ssu-list-action {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 9px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 245, 232, 0.052);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-danger-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 14px;
+  border: 1px solid rgba(255, 120, 120, 0.22);
+  border-radius: 18px;
+  background: rgba(255, 120, 120, 0.08);
+  color: #ffb4a8;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  box-shadow: var(--glass-highlight);
+}
+
+/* SSU5 scan QR screen */
+.ssu-scan-screen {
+  gap: 14px;
+}
+
+.ssu-qr-card {
+  text-align: center;
+}
+
+.ssu-qr-frame {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  margin: 2px auto 14px;
+  display: grid;
+  place-items: center;
+  border-radius: 34px;
+  border: 1px solid rgba(216, 184, 106, 0.2);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(240, 211, 138, 0.16), transparent 55%),
+    rgba(255, 245, 232, 0.045);
+  box-shadow: var(--glass-highlight), inset 0 0 28px rgba(0, 0, 0, 0.18);
+}
+
+.ssu-qr-corners span {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: var(--gold-light);
+  opacity: 0.9;
+}
+
+.ssu-qr-corners span:nth-child(1) {
+  top: 18px;
+  left: 18px;
+  border-top: 3px solid;
+  border-left: 3px solid;
+  border-radius: 8px 0 0 0;
+}
+
+.ssu-qr-corners span:nth-child(2) {
+  top: 18px;
+  right: 18px;
+  border-top: 3px solid;
+  border-right: 3px solid;
+  border-radius: 0 8px 0 0;
+}
+
+.ssu-qr-corners span:nth-child(3) {
+  bottom: 18px;
+  left: 18px;
+  border-bottom: 3px solid;
+  border-left: 3px solid;
+  border-radius: 0 0 0 8px;
+}
+
+.ssu-qr-corners span:nth-child(4) {
+  right: 18px;
+  bottom: 18px;
+  border-right: 3px solid;
+  border-bottom: 3px solid;
+  border-radius: 0 0 8px 0;
+}
+
+.ssu-qr-symbol {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  transform: translateY(-20px);
+}
+
+.ssu-qr-symbol span {
+  border-radius: 12px;
+  background: rgba(240, 211, 138, 0.78);
+  box-shadow: 0 0 18px rgba(240, 211, 138, 0.12);
+}
+
+.ssu-qr-symbol span:nth-child(2),
+.ssu-qr-symbol span:nth-child(3) {
+  background: rgba(255, 245, 232, 0.18);
+}
+
+.ssu-helper-text {
+  margin: 0 0 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* SSU3 friends screen */
+.ssu-friends-screen {
+  gap: 12px;
+}
+
+.ssu-compact-head {
+  margin-bottom: 4px;
+}
+
+.ssu-compact-head h1 {
+  font-size: 30px;
+}
+
+.ssu-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.ssu-tab {
+  min-height: 40px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 245, 232, 0.045);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 850;
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-tab.active {
+  border-color: rgba(216, 184, 106, 0.32);
+  background:
+    radial-gradient(circle at 30% 15%, rgba(240, 211, 138, 0.18), transparent 54%),
+    rgba(216, 184, 106, 0.12);
+  color: var(--gold-light);
+}
+
+.ssu-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ssu-user-row {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 10px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 245, 232, 0.045);
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-user-row.stacked {
+  grid-template-columns: 44px 1fr;
+}
+
+.ssu-mini-avatar {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  color: var(--gold-light);
+  font-size: 15px;
+  font-weight: 900;
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.22), transparent 50%),
+    rgba(216, 184, 106, 0.1);
+  border: 1px solid rgba(216, 184, 106, 0.14);
+}
+
+.ssu-user-info {
+  min-width: 0;
+}
+
+.ssu-user-info h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.ssu-user-info p {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.ssu-request-actions {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.ssu-secondary-mini-button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 245, 232, 0.045);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ssu-empty-text {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* SSU4 group screen */
+.ssu-group-screen {
+  gap: 12px;
+}
+
+.ssu-group-start-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ssu-group-start-card h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 22px;
+  line-height: 1.08;
+  letter-spacing: -0.4px;
+}
+
+.ssu-group-start-card p:not(.eyebrow) {
+  margin: 9px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ssu-group-icon {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 23px;
+  color: var(--gold-light);
+  font-size: 28px;
+  font-weight: 900;
+  border: 1px solid rgba(216, 184, 106, 0.18);
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.24), transparent 50%),
+    rgba(216, 184, 106, 0.1);
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-status-pill {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid rgba(216, 184, 106, 0.18);
+  border-radius: 999px;
+  background: rgba(216, 184, 106, 0.1);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.ssu-member-badge {
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: rgba(255, 245, 232, 0.045);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.ssu-member-badge.active {
+  background: rgba(110, 231, 183, 0.1);
+  color: #a8f5d5;
+}
+/* Auth screens without header and bottom navigation */
+.auth-entry-slot .ssu-login-screen,
+.auth-entry-slot .ssu-register-screen {
+  padding-top: 54px !important;
+  padding-bottom: 40px !important;
+}
+
+/* Register screen spacing fixes */
+.ssu-register-screen .ssu-card {
+  padding: 15px;
+}
+
+.ssu-register-screen .ssu-form-group {
+  margin-bottom: 12px;
+}
+
+.ssu-register-screen .ssu-input {
+  min-height: 44px;
+}
+
+.ssu-register-action {
+  margin-top: 45px;
+}
+.ssu-login-screen .ssu-main-action {
+  margin-top: 45px;
+}
+/* Profile redesign */
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen,
+.screen.ssu-profile-screen.ssu-screen.ssu-edit-profile-screen {
+  padding-top: 54px !important;
+  padding-bottom: 54px !important;
+}
+
+.ssu-account-profile-screen {
+  gap: 16px;
+}
+
+.ssu-account-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px;
+  border-radius: 30px;
+}
+
+.ssu-account-card .ssu-profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 26px;
+  font-size: 21px;
+}
+
+.ssu-account-info {
+  min-width: 0;
+}
+
+.ssu-account-info h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 28px;
+  line-height: 1.04;
+  letter-spacing: -0.8px;
+}
+
+.ssu-account-info p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.ssu-profile-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.ssu-metric-card {
+  min-height: 92px;
+  padding: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 235, 215, 0.1);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(240, 211, 138, 0.12), transparent 42%),
+    linear-gradient(145deg, rgba(255, 245, 232, 0.085), rgba(255, 245, 232, 0.026));
+  color: inherit;
+  text-align: center;
+  box-shadow: var(--glass-highlight), 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+button.ssu-metric-card {
+  cursor: pointer;
+}
+
+.ssu-metric-card span {
+  display: block;
+  color: var(--gold-light);
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.ssu-metric-card p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ssu-profile-logout-button {
+  margin-top: 2px;
+}
+
+.ssu-edit-profile-screen .ssu-card {
+  padding: 16px;
+}
+/* Profile friends bottom sheet */
+.ssu-account-card {
+  position: relative;
+}
+
+.ssu-profile-add-friend-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(216, 184, 106, 0.18);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.18), transparent 50%),
+    rgba(216, 184, 106, 0.1);
+  color: var(--gold-light);
+  box-shadow: var(--glass-highlight);
+}
+
+.ssu-profile-add-friend-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.ssu-profile-friends-sheet {
+  max-height: 78%;
+}
+
+.ssu-sheet-content {
+  padding: 0 18px 24px;
+}
+
+.ssu-sheet-title {
+  margin-bottom: 14px;
+}
+
+.ssu-sheet-title h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 24px;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+}
+
+.ssu-sheet-subtitle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 14px 0 10px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.ssu-sheet-subtitle-row.with-margin {
+  margin-top: 18px;
+}
+/* Profile top row and friend actions */
+.ssu-profile-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+}
+
+.ssu-profile-top-row h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 27px;
+  line-height: 1.04;
+  letter-spacing: -0.8px;
+}
+
+.ssu-profile-add-friend-button {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(216, 184, 106, 0.22);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.22), transparent 50%),
+    rgba(216, 184, 106, 0.12);
+  color: var(--gold-light);
+  box-shadow: var(--glass-highlight), 0 14px 28px rgba(0, 0, 0, 0.14);
+}
+
+.ssu-profile-add-friend-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Bottom sheet scroll fix */
+.ssu-profile-friends-sheet {
+  max-height: 82vh;
+  overflow: hidden;
+}
+
+.ssu-profile-friends-sheet .standard-bottom-sheet-body,
+.ssu-profile-friends-sheet .bottom-sheet-body {
+  overflow-y: auto;
+}
+
+.ssu-sheet-content {
+  max-height: 68vh;
+  overflow-y: auto;
+  padding: 0 18px 28px;
+  overscroll-behavior: contain;
+}
+
+.ssu-sheet-title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin-bottom: 14px;
+  padding-top: 2px;
+  padding-bottom: 10px;
+  background: var(--surface-strong, rgba(18, 15, 14, 0.96));
+}
+
+.ssu-sheet-title h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 24px;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+}
+.ssu-profile-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+}
+
+.ssu-profile-top-row h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 34px;
+  line-height: 1.02;
+  letter-spacing: -1px;
+}
+
+.ssu-profile-add-friend-button {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  transform: translateY(-8px);
+  border: 1px solid rgba(216, 184, 106, 0.22);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.22), transparent 50%),
+    rgba(216, 184, 106, 0.12);
+  color: var(--gold-light);
+  box-shadow: var(--glass-highlight), 0 14px 28px rgba(0, 0, 0, 0.14);
+}
+
+.ssu-profile-add-friend-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.ssu-profile-add-plus {
+  position: absolute;
+  right: 9px;
+  bottom: 8px;
+  width: 15px;
+  height: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--gold-light);
+  color: #17110d;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+/* Table required screen */
+.ssu-table-required-screen {
+  justify-content: center;
+  padding-top: 54px !important;
+  padding-bottom: 54px !important;
+}
+
+.ssu-table-required-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 22px;
+  border-radius: 30px;
+}
+
+.ssu-table-required-card h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 30px;
+  line-height: 1.04;
+  letter-spacing: -0.8px;
+}
+
+.ssu-table-required-card p:not(.eyebrow) {
+  margin: 10px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Final SSU4/SSU10 access screens */
+.ssu-group-plain-head {
+  margin-top: 6px;
+  margin-bottom: 18px;
+  padding: 0 4px;
+}
+
+.ssu-group-plain-head h1 {
+  max-width: 328px;
+}
+
+.ssu-group-plain-head p:not(.eyebrow) {
+  max-width: 330px;
+}
+
+.ssu-access-card {
+  padding: 16px;
+}
+
+.ssu-access-card .ssu-main-action {
+  margin-top: 0;
+}
+
+.ssu-reservation-locked-screen {
+  justify-content: flex-start;
+}
+
+/* Unified centered access/auth cards */
+.screen.ssu-screen.ssu-centered-access-screen,
+.auth-entry-slot .screen.ssu-screen.ssu-centered-access-screen {
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding-top: 38px !important;
+  padding-bottom: 38px !important;
+}
+
+.screen.ssu-register-screen.ssu-screen.ssu-centered-access-screen,
+.auth-entry-slot .screen.ssu-register-screen.ssu-centered-access-screen {
+  justify-content: flex-start;
+  padding-top: 26px !important;
+}
+
+.ssu-centered-access-card {
+  width: 100%;
+  max-width: 352px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 23px 20px 20px;
+  border-radius: 32px;
+  text-align: center;
+}
+
+.ssu-centered-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 24px;
+  border: 1px solid rgba(216, 184, 106, 0.2);
+  background:
+    radial-gradient(circle at 35% 22%, rgba(240, 211, 138, 0.25), transparent 50%),
+    linear-gradient(145deg, rgba(216, 184, 106, 0.16), rgba(255, 245, 232, 0.045));
+  color: var(--gold-light);
+  font-size: 19px;
+  font-weight: 950;
+  letter-spacing: -0.4px;
+  box-shadow: var(--glass-highlight), 0 14px 30px rgba(0, 0, 0, 0.16);
+}
+
+.ssu-centered-copy {
+  width: 100%;
+}
+
+.ssu-centered-copy .eyebrow {
+  margin: 0 0 9px;
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ssu-centered-copy h1 {
+  margin: 0 auto;
+  max-width: 300px;
+  color: var(--text-primary);
+  font-size: 30px;
+  line-height: 1.04;
+  letter-spacing: -0.9px;
+}
+
+.ssu-centered-copy p:not(.eyebrow) {
+  margin: 11px auto 0;
+  max-width: 304px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.ssu-centered-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.ssu-centered-form .ssu-form-group {
+  margin-bottom: 0 !important;
+}
+
+.ssu-centered-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.ssu-centered-actions .ssu-main-action,
+.ssu-centered-actions .ssu-entry-action-button,
+.ssu-centered-actions .ssu-link-button {
+  width: 100%;
+  max-width: none;
+  margin-top: 0 !important;
+}
+
+.ssu-centered-actions .ssu-entry-action-button {
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.ssu-centered-actions .ssu-link-button {
+  min-height: 38px;
+  padding: 7px 10px;
+}
+
+.ssu-auth-centered-card {
+  gap: 15px;
+  padding-top: 21px;
+}
+
+.ssu-auth-centered-card .ssu-centered-copy h1 {
+  font-size: 29px;
+}
+
+.ssu-register-centered-card {
+  gap: 12px;
+  padding: 18px 18px 17px;
+}
+
+.ssu-register-centered-card .ssu-centered-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 20px;
+  font-size: 21px;
+}
+
+.ssu-register-centered-card .ssu-centered-copy h1 {
+  font-size: 26px;
+}
+
+.ssu-register-centered-card .ssu-centered-copy p:not(.eyebrow) {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.42;
+}
+
+.ssu-register-centered-card .ssu-centered-form {
+  gap: 9px;
+}
+
+.ssu-register-centered-card .ssu-input {
+  min-height: 42px;
+}
+
+.ssu-entry-profile-screen .ssu-centered-access-card {
+  padding-top: 24px;
+}
+
+.ssu-reservation-locked-screen.ssu-centered-access-screen {
+  justify-content: center;
+}
+
+/* Final polish: centered access cards and centered action labels */
+.screen.ssu-register-screen.ssu-screen.ssu-centered-access-screen,
+.auth-entry-slot .screen.ssu-register-screen.ssu-centered-access-screen {
+  justify-content: center;
+  align-items: center;
+  padding-top: 32px !important;
+  padding-bottom: 32px !important;
+}
+
+.ssu-screen .primary-action-button.ssu-main-action,
+.auth-entry-slot .primary-action-button.ssu-main-action {
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+}
+
+.ssu-screen .primary-action-button.ssu-main-action > span,
+.auth-entry-slot .primary-action-button.ssu-main-action > span,
+.ssu-entry-action-button > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ssu-screen .primary-action-button.ssu-main-action > span:last-child,
+.auth-entry-slot .primary-action-button.ssu-main-action > span:last-child,
+.ssu-entry-action-button > span:last-child {
+  min-width: 18px;
+}
+
+.ssu-table-required-screen.ssu-centered-access-screen,
+.ssu-status-empty-screen.ssu-centered-access-screen,
+.ssu-bill-empty-screen.ssu-centered-access-screen {
+  justify-content: center;
+  align-items: center;
+  padding-top: 42px !important;
+  padding-bottom: 42px !important;
+}
+
+.ssu-table-required-card {
+  max-width: 352px;
+}
+
+.ssu-table-required-card .ssu-centered-copy h1,
+.ssu-status-empty-screen .ssu-centered-copy h1,
+.ssu-bill-empty-screen .ssu-centered-copy h1 {
+  font-size: 29px;
+}
+
+.ssu-table-required-card .ssu-centered-actions,
+.ssu-status-empty-screen .ssu-centered-actions,
+.ssu-bill-empty-screen .ssu-centered-actions {
+  margin-top: 2px;
+}
+
+.ssu-status-empty-screen .ssu-centered-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.ssu-centered-actions .ssu-main-action,
+.ssu-login-screen .ssu-centered-actions .ssu-main-action,
+.ssu-register-screen .ssu-centered-actions .ssu-main-action {
+  margin-top: 0 !important;
+}
+
+/* Final SSU5 QR scanner redesign */
+.screen.ssu-scan-screen.ssu-screen.ssu-centered-access-screen {
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 26px !important;
+  padding-bottom: 34px !important;
+}
+
+.ssu-scan-access-card {
+  max-width: 354px;
+  gap: 14px;
+  padding: 20px 18px 18px;
+}
+
+.ssu-scan-main-icon {
+  font-size: 25px;
+}
+
+.ssu-scan-access-card .ssu-centered-copy h1 {
+  max-width: 292px;
+  font-size: 29px;
+}
+
+.ssu-scan-access-card .ssu-centered-copy p:not(.eyebrow) {
+  max-width: 306px;
+  margin-top: 9px;
+}
+
+.ssu-scan-preview {
+  position: relative;
+  width: 100%;
+  height: 182px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: 30px;
+  border: 1px solid rgba(216, 184, 106, 0.18);
+  background:
+    radial-gradient(circle at 50% 26%, rgba(240, 211, 138, 0.15), transparent 52%),
+    linear-gradient(145deg, rgba(255, 245, 232, 0.07), rgba(255, 245, 232, 0.025));
+  box-shadow: var(--glass-highlight), inset 0 0 34px rgba(0, 0, 0, 0.22);
+}
+
+.ssu-scan-preview.is-active {
+  border-color: rgba(216, 184, 106, 0.34);
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.ssu-scan-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.ssu-scan-preview.is-active .ssu-scan-video {
+  opacity: 1;
+}
+
+.ssu-scan-placeholder {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+}
+
+.ssu-scan-frame-compact {
+  width: 132px;
+  height: 132px;
+  margin: 0;
+  border-radius: 30px;
+}
+
+.ssu-scan-frame-compact .ssu-qr-symbol {
+  width: 52px;
+  height: 52px;
+  gap: 7px;
+  transform: translateY(-15px);
+}
+
+.ssu-scan-frame-compact .ssu-qr-corners span {
+  width: 27px;
+  height: 27px;
+}
+
+.ssu-scan-line {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  top: 50%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(240, 211, 138, 0.95), transparent);
+  box-shadow: 0 0 18px rgba(240, 211, 138, 0.28);
+  animation: ssuScanLine 2.2s ease-in-out infinite;
+}
+
+@keyframes ssuScanLine {
+  0%, 100% {
+    transform: translateY(-58px);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(58px);
+    opacity: 1;
+  }
+}
+
+.ssu-camera-status {
+  width: 100%;
+  min-height: 38px;
+  margin: -2px 0 0;
+  padding: 9px 11px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  background: rgba(255, 245, 232, 0.045);
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.ssu-camera-status.is-active {
+  border-color: rgba(216, 184, 106, 0.18);
+  color: var(--gold-light);
+}
+
+.ssu-camera-status.is-error,
+.ssu-camera-status.is-unsupported {
+  border-color: rgba(255, 120, 120, 0.2);
+  color: #ffb4a8;
+}
+
+.ssu-scan-actions {
+  gap: 9px;
+}
+
+.ssu-secondary-action {
+  min-height: 42px;
+  border: 1px solid rgba(255, 235, 215, 0.09);
+  background: rgba(255, 245, 232, 0.045);
+  color: var(--text-secondary);
+}
+
+.ssu-scan-divider {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 1px 0 -1px;
+}
+
+.ssu-scan-divider span {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 235, 215, 0.14), transparent);
+}
+
+.ssu-scan-divider p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ssu-scan-manual-form {
+  gap: 10px;
+}
+
+@media (max-height: 760px) {
+  .screen.ssu-scan-screen.ssu-screen.ssu-centered-access-screen {
+    justify-content: flex-start;
+    padding-top: 18px !important;
+  }
+
+  .ssu-scan-access-card {
+    gap: 12px;
+    padding-top: 17px;
+  }
+
+  .ssu-scan-preview {
+    height: 158px;
+  }
+
+  .ssu-scan-main-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 21px;
+  }
+
+  .ssu-scan-access-card .ssu-centered-copy h1 {
+    font-size: 27px;
+  }
+}
+
+/* Final logged-in profile redesign */
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen {
+  position: relative;
+  padding-top: 30px !important;
+  padding-bottom: 34px !important;
+  gap: 12px !important;
+  justify-content: flex-start !important;
+  overflow-y: auto;
+}
+
+.ssu-profile-back-button {
+  align-self: flex-start;
+  width: 44px;
+  height: 44px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(255, 235, 215, 0.1);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(240, 211, 138, 0.18), transparent 48%),
+    rgba(255, 245, 232, 0.055);
+  color: var(--text-primary);
+  box-shadow: var(--glass-highlight), 0 12px 26px rgba(0, 0, 0, 0.18);
+}
+
+.ssu-profile-back-button span {
+  font-size: 22px;
+  font-weight: 950;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.ssu-account-card.ssu-profile-social-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  padding: 18px;
+  overflow: hidden;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 18% 4%, rgba(216, 184, 106, 0.14), transparent 38%),
+    radial-gradient(circle at 92% 12%, rgba(255, 245, 232, 0.085), transparent 35%),
+    linear-gradient(145deg, rgba(255, 245, 232, 0.092), rgba(255, 245, 232, 0.032));
+  border: 1px solid rgba(255, 235, 215, 0.11);
+  box-shadow: var(--glass-highlight), 0 22px 45px rgba(0, 0, 0, 0.22);
+}
+
+.ssu-profile-card-glow {
+  position: absolute;
+  inset: -82px -74px auto auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(240, 211, 138, 0.22), transparent 68%);
+  pointer-events: none;
+}
+
+.ssu-profile-social-main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.ssu-profile-social-avatar.ssu-profile-avatar {
+  width: 84px;
+  height: 84px;
+  flex: 0 0 auto;
+  border-radius: 30px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255, 245, 232, 0.22), transparent 38%),
+    linear-gradient(145deg, rgba(216, 184, 106, 0.34), rgba(81, 47, 30, 0.72));
+  border: 1px solid rgba(255, 235, 215, 0.22);
+  color: var(--text-primary);
+  font-size: 25px;
+  font-weight: 950;
+  letter-spacing: -0.6px;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 245, 232, 0.14);
+}
+
+.ssu-profile-social-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.ssu-profile-social-copy .eyebrow {
+  margin-bottom: 7px;
+}
+
+.ssu-profile-social-copy h1 {
+  margin: 0;
+  max-width: 220px;
+  color: var(--text-primary);
+  font-size: 27px;
+  line-height: 1.04;
+  letter-spacing: -0.8px;
+  overflow-wrap: anywhere;
+}
+
+.ssu-profile-social-copy span,
+.ssu-profile-social-copy small {
+  display: block;
+  max-width: 220px;
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.28;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ssu-profile-social-copy small {
+  color: rgba(255, 245, 232, 0.76);
+}
+
+.ssu-profile-sync-note {
+  position: relative;
+  z-index: 1;
+  margin: -4px 0 0;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ssu-profile-social-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px;
+  border-radius: 24px;
+  background: rgba(255, 245, 232, 0.052);
+  border: 1px solid rgba(255, 235, 215, 0.075);
+}
+
+.ssu-profile-social-stats button,
+.ssu-profile-social-stats div {
+  min-width: 0;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+  color: inherit;
+  text-align: center;
+  font: inherit;
+}
+
+.ssu-profile-social-stats button {
+  cursor: pointer;
+}
+
+.ssu-profile-social-stats button:active,
+.ssu-profile-social-stats div:active {
+  transform: scale(0.98);
+}
+
+.ssu-profile-social-stats strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.ssu-profile-social-stats span {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.55px;
+}
+
+.ssu-profile-social-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.ssu-profile-social-actions .ssu-main-action,
+.ssu-profile-social-actions .ssu-entry-action-button,
+.ssu-profile-logout-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-inline: 14px;
+  text-align: center;
+}
+
+.ssu-profile-social-actions .ssu-main-action {
+  margin: 0;
+}
+
+.ssu-profile-social-actions .ssu-entry-action-button {
+  margin: 0;
+}
+
+.ssu-profile-social-actions .ssu-entry-action-button.muted {
+  grid-column: 1 / -1;
+}
+
+.ssu-profile-activity-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ssu-profile-activity-card {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(240, 211, 138, 0.1), transparent 42%),
+    linear-gradient(145deg, rgba(255, 245, 232, 0.078), rgba(255, 245, 232, 0.025));
+  border: 1px solid rgba(255, 235, 215, 0.09);
+}
+
+.ssu-profile-activity-card > span {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(216, 184, 106, 0.12);
+  border: 1px solid rgba(216, 184, 106, 0.16);
+  font-size: 18px;
+}
+
+.ssu-profile-activity-card div {
+  min-width: 0;
+}
+
+.ssu-profile-activity-card strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 17px;
+  font-weight: 950;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ssu-profile-activity-card p {
+  margin: 5px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ssu-profile-logout-button {
+  width: 100%;
+  margin-top: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 109, 109, 0.16);
+  background: rgba(255, 109, 109, 0.08);
+  color: #ffb8b8;
+  font-weight: 900;
+}
+
+@media (max-width: 390px) {
+  .screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen {
+    padding-top: 24px !important;
+    gap: 10px !important;
+  }
+
+  .ssu-profile-back-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 16px;
+  }
+
+  .ssu-profile-social-avatar.ssu-profile-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 27px;
+    font-size: 23px;
+  }
+
+  .ssu-profile-social-main {
+    gap: 11px;
+  }
+
+  .ssu-profile-social-copy h1 {
+    max-width: 170px;
+    font-size: 23px;
+  }
+
+  .ssu-profile-social-copy span,
+  .ssu-profile-social-copy small {
+    max-width: 170px;
+  }
+
+  .ssu-profile-social-actions,
+  .ssu-profile-activity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Profile polish: cleaner back pill, edit form and profile sheets */
+.screen.ssu-profile-screen.ssu-screen.ssu-edit-profile-screen.ssu-centered-access-screen {
+  justify-content: center !important;
+  align-items: center !important;
+  padding-top: 28px !important;
+  padding-bottom: 36px !important;
+}
+
+.ssu-edit-profile-card {
+  max-width: 352px;
+  padding: 22px 20px 20px !important;
+}
+
+.ssu-edit-profile-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 23px;
+  font-size: 20px;
+}
+
+.ssu-edit-profile-actions {
+  margin-top: 1px;
+}
+
+.ssu-edit-profile-actions .ssu-main-action,
+.ssu-edit-profile-actions .ssu-entry-action-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ssu-profile-back-button {
+  width: auto !important;
+  min-width: 78px;
+  height: 42px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 13px 0 11px;
+  border-radius: 999px !important;
+  border: 1px solid rgba(216, 184, 106, 0.18) !important;
+  background:
+    radial-gradient(circle at 24% 16%, rgba(240, 211, 138, 0.18), transparent 52%),
+    rgba(255, 245, 232, 0.052) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--glass-highlight), 0 12px 26px rgba(0, 0, 0, 0.16) !important;
+}
+
+.ssu-profile-back-button .ssu-profile-back-arrow {
+  font-size: 19px;
+  font-weight: 950;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.ssu-profile-back-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.standard-global-sheet.ssu-profile-friends-sheet {
+  max-height: 84% !important;
+  height: auto !important;
+  padding: 8px 14px calc(18px + var(--safe-bottom)) !important;
+  overflow: hidden !important;
+  border-radius: 31px 31px 0 0 !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(240, 211, 138, 0.14), transparent 33%),
+    radial-gradient(circle at 8% 95%, rgba(255, 245, 232, 0.075), transparent 42%),
+    linear-gradient(165deg, rgba(50, 35, 25, 0.985), rgba(18, 11, 8, 0.985)) !important;
+  border-color: rgba(255, 235, 215, 0.12) !important;
+}
+
+.ssu-profile-friends-sheet .standard-global-sheet-chrome,
+.ssu-profile-friends-sheet .sheet-sticky-chrome {
+  min-height: 36px !important;
+  height: 36px !important;
+  position: relative !important;
+  top: auto !important;
+  z-index: 4 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.ssu-profile-friends-sheet .cart-sheet-handle {
+  width: 44px !important;
+  height: 4px !important;
+  margin: 7px auto 13px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, rgba(216, 184, 106, 0.42), rgba(255, 245, 232, 0.23)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 245, 232, 0.22), 0 6px 14px rgba(0, 0, 0, 0.14) !important;
+}
+
+.ssu-profile-friends-sheet .sheet-close,
+.ssu-profile-friends-sheet .sheet-close.danger {
+  top: 2px !important;
+  right: 2px !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 15px !important;
+  border: 1px solid rgba(216, 184, 106, 0.18) !important;
+  background:
+    radial-gradient(circle at 35% 20%, rgba(240, 211, 138, 0.2), transparent 55%),
+    rgba(255, 245, 232, 0.058) !important;
+  color: var(--gold-light) !important;
+  box-shadow: var(--glass-highlight), 0 10px 22px rgba(0, 0, 0, 0.18) !important;
+}
+
+.ssu-profile-friends-sheet .sheet-close svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-content {
+  max-height: min(64vh, 560px) !important;
+  overflow-y: auto !important;
+  padding: 0 2px 20px !important;
+  background: transparent !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(216, 184, 106, 0.38) transparent;
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(216, 184, 106, 0.32);
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-title {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1 !important;
+  margin: 0 44px 15px 2px !important;
+  padding: 0 0 11px !important;
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom: 1px solid rgba(255, 235, 215, 0.08);
+  box-shadow: none !important;
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-title h2 {
+  margin: 0 !important;
+  color: var(--text-primary) !important;
+  font-size: 27px !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.75px !important;
+}
+
+.ssu-profile-friends-sheet .ssu-form-group {
+  margin-bottom: 12px;
+}
+
+.ssu-profile-friends-sheet .ssu-sheet-subtitle-row {
+  margin: 14px 2px 10px;
+  padding: 0 2px;
+}
+
+.ssu-profile-friends-sheet .ssu-user-list {
+  gap: 9px;
+}
+
+.ssu-profile-friends-sheet .ssu-user-row {
+  border-radius: 21px;
+  background:
+    radial-gradient(circle at 14% 0%, rgba(240, 211, 138, 0.09), transparent 44%),
+    rgba(255, 245, 232, 0.047);
+  border-color: rgba(255, 235, 215, 0.08);
+}
+
+.ssu-profile-friends-sheet .ssu-small-button,
+.ssu-profile-friends-sheet .ssu-secondary-mini-button {
+  min-height: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 390px) {
+  .ssu-profile-back-button {
+    min-width: 72px;
+    height: 39px !important;
+    padding-inline: 10px 12px;
+  }
+
+  .ssu-profile-back-label {
+    font-size: 11px;
+  }
+
+  .standard-global-sheet.ssu-profile-friends-sheet {
+    padding-inline: 12px !important;
+  }
+}
+
+/* Final profile back button restore + group redesign */
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-back-button {
+  align-self: flex-start !important;
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 235, 215, 0.1) !important;
+  border-radius: 18px !important;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(240, 211, 138, 0.18), transparent 48%),
+    rgba(255, 245, 232, 0.055) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--glass-highlight), 0 12px 26px rgba(0, 0, 0, 0.18) !important;
+}
+
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-back-button span {
+  font-size: 22px !important;
+  font-weight: 950 !important;
+  line-height: 1 !important;
+  transform: translateY(-1px) !important;
+}
+
+.ssu-group-polished-screen {
+  padding-top: 22px !important;
+  gap: 12px !important;
+}
+
+.ssu-group-hero-card,
+.ssu-group-create-card,
+.ssu-group-panel-card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 31px;
+  border: 1px solid rgba(255, 235, 215, 0.11);
+  background:
+    radial-gradient(circle at 14% 0%, rgba(216, 184, 106, 0.14), transparent 39%),
+    radial-gradient(circle at 92% 18%, rgba(255, 245, 232, 0.075), transparent 35%),
+    linear-gradient(148deg, rgba(255, 245, 232, 0.09), rgba(255, 245, 232, 0.028));
+  box-shadow: var(--glass-highlight), 0 22px 45px rgba(0, 0, 0, 0.2);
+}
+
+.ssu-group-hero-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 18px;
+}
+
+.ssu-group-card-glow {
+  position: absolute;
+  inset: -82px -70px auto auto;
+  width: 188px;
+  height: 188px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(240, 211, 138, 0.2), transparent 68%);
+  pointer-events: none;
+}
+
+.ssu-group-hero-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ssu-group-pulse-icon,
+.ssu-group-create-icon {
+  width: 70px;
+  height: 70px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 27px;
+  color: var(--gold-light);
+  font-size: 27px;
+  font-weight: 950;
+  border: 1px solid rgba(216, 184, 106, 0.22);
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 245, 232, 0.22), transparent 38%),
+    linear-gradient(145deg, rgba(216, 184, 106, 0.27), rgba(81, 47, 30, 0.68));
+  box-shadow:
+    var(--glass-highlight),
+    0 18px 36px rgba(0, 0, 0, 0.24),
+    inset 0 -14px 20px rgba(0, 0, 0, 0.16);
+}
+
+.ssu-group-hero-copy {
+  min-width: 0;
+}
+
+.ssu-group-hero-copy h1,
+.ssu-group-create-copy h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 26px;
+  line-height: 1.04;
+  letter-spacing: -0.75px;
+}
+
+.ssu-group-hero-copy p:not(.eyebrow),
+.ssu-group-create-copy p:not(.eyebrow) {
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ssu-group-hero-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.ssu-group-hero-stats > div {
+  min-width: 0;
+  padding: 10px 8px;
+  border-radius: 19px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  background: rgba(255, 245, 232, 0.046);
+  box-shadow: inset 0 1px 0 rgba(255, 245, 232, 0.06);
+}
+
+.ssu-group-hero-stats strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.ssu-group-hero-stats span {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.ssu-group-rule-note {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 10px 11px;
+  border-radius: 18px;
+  border: 1px solid rgba(216, 184, 106, 0.12);
+  background: rgba(216, 184, 106, 0.07);
+  color: rgba(245, 232, 208, 0.72);
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.ssu-group-create-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 17px;
+}
+
+.ssu-group-create-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 24px;
+  font-size: 29px;
+}
+
+.ssu-group-panel-card {
+  padding: 15px !important;
+}
+
+.ssu-group-section-title {
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ssu-group-section-title h2 {
+  margin-top: 1px;
+  font-size: 20px;
+  letter-spacing: -0.45px;
+}
+
+.ssu-group-user-list {
+  gap: 9px;
+}
+
+.ssu-group-user-row.ssu-user-row {
+  border-color: rgba(255, 235, 215, 0.085);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(216, 184, 106, 0.075), transparent 42%),
+    rgba(255, 245, 232, 0.042);
+}
+
+.ssu-group-user-row .ssu-mini-avatar {
+  border-color: rgba(216, 184, 106, 0.2);
+  background:
+    radial-gradient(circle at 35% 22%, rgba(255, 245, 232, 0.18), transparent 48%),
+    rgba(216, 184, 106, 0.13);
+  color: var(--gold-light);
+}
+
+.ssu-group-empty-friends {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 235, 215, 0.075);
+  background: rgba(255, 245, 232, 0.035);
+}
+
+.ssu-group-empty-friends .ssu-entry-action-button {
+  min-height: 45px;
+}
+
+.ssu-group-leave-button {
+  width: 100%;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media (max-width: 390px) {
+  .screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-back-button {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    border-radius: 16px !important;
+  }
+
+  .ssu-group-polished-screen {
+    padding-top: 18px !important;
+  }
+
+  .ssu-group-hero-card {
+    padding: 16px;
+  }
+
+  .ssu-group-pulse-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 24px;
+    font-size: 24px;
+  }
+
+  .ssu-group-hero-copy h1 {
+    font-size: 23px;
+  }
+
+  .ssu-group-hero-stats {
+    gap: 7px;
+  }
+}
+
+/* Group flow final compact redesign */
+.screen.ssu-group-polished-screen.ssu-group-compact-screen {
+  padding-top: 84px !important;
+  gap: 13px !important;
+}
+
+.ssu-group-create-only-card {
+  margin-top: 26px;
+  align-items: center;
+  text-align: center;
+  padding: 24px 18px 20px !important;
+}
+
+.ssu-group-create-only-card .ssu-group-create-icon {
+  margin-inline: auto;
+}
+
+.ssu-group-create-only-card .ssu-main-action {
+  width: 100%;
+}
+
+.ssu-group-members-card {
+  margin-top: 4px;
+}
+
+.ssu-group-action-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 17px !important;
+  border-radius: 29px;
+  border: 1px solid rgba(255, 235, 215, 0.1);
+  background:
+    radial-gradient(circle at 16% 0%, rgba(216, 184, 106, 0.1), transparent 42%),
+    linear-gradient(148deg, rgba(255, 245, 232, 0.08), rgba(255, 245, 232, 0.028));
+  box-shadow: var(--glass-highlight), 0 18px 34px rgba(0, 0, 0, 0.18);
+}
+
+.ssu-group-action-card h2 {
+  margin: 1px 0 0;
+  color: var(--text-primary);
+  font-size: 19px;
+  letter-spacing: -0.38px;
+}
+
+.ssu-group-action-card p:not(.eyebrow) {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  line-height: 1.42;
+}
+
+.ssu-group-invite-card {
+  margin-top: 10px;
+}
+
+.standard-global-sheet.ssu-group-invite-sheet,
+.standard-global-sheet.ssu-group-leave-sheet,
+.standard-global-sheet.reservation-option-sheet {
+  padding: 14px 14px max(18px, env(safe-area-inset-bottom)) !important;
+}
+
+.ssu-sheet-title-block {
+  padding: 5px 4px 14px;
+  text-align: left;
+}
+
+.ssu-sheet-title-block h2 {
+  margin: 2px 0 0;
+  color: var(--text-primary);
+  font-size: 23px;
+  line-height: 1.05;
+  letter-spacing: -0.62px;
+}
+
+.ssu-sheet-title-block p:not(.eyebrow) {
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ssu-group-sheet-list {
+  max-height: 52vh;
+  overflow: auto;
+  padding-right: 3px;
+}
+
+.ssu-group-sheet-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ssu-group-sheet-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(216, 184, 106, 0.24);
+}
+
+.ssu-sheet-action-row {
+  display: grid;
+  gap: 10px;
+}
+
+.ssu-sheet-action-row .ssu-danger-button,
+.ssu-sheet-action-row .ssu-entry-action-button {
+  width: 100%;
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+@media (max-width: 390px) {
+  .screen.ssu-group-polished-screen.ssu-group-compact-screen {
+    padding-top: 78px !important;
+  }
+
+  .ssu-group-create-only-card {
+    margin-top: 16px;
+  }
+}
+
+/* Final group card refinement: one calm centered card instead of a small card museum. */
+.screen.ssu-group-polished-screen.ssu-group-compact-screen.ssu-group-centered-flow {
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  padding-top: 122px !important;
+  padding-bottom: 112px !important;
+}
+
+.ssu-group-single-card {
+  width: 100%;
+  margin-block: auto !important;
+  padding: 22px 17px 18px !important;
+  border-radius: 32px !important;
+}
+
+.ssu-group-create-only-card.ssu-group-single-card {
+  min-height: 335px;
+  justify-content: center;
+  gap: 17px;
+}
+
+.ssu-group-single-card .ssu-group-create-icon {
+  margin-inline: auto;
+}
+
+.ssu-group-card-topline {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 14px;
+}
+
+.ssu-group-card-topline h2 {
+  margin: 2px 0 0;
+  color: var(--text-primary);
+  font-size: 24px;
+  line-height: 1.05;
+  letter-spacing: -0.62px;
+}
+
+.ssu-group-card-topline p:not(.eyebrow) {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.ssu-group-active-icon {
+  width: 62px !important;
+  height: 62px !important;
+  border-radius: 24px !important;
+  font-size: 24px !important;
+  margin: 0 !important;
+}
+
+.ssu-group-card-block {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 235, 215, 0.08);
+  background:
+    radial-gradient(circle at 6% 0%, rgba(216, 184, 106, 0.075), transparent 46%),
+    rgba(255, 245, 232, 0.034);
+  box-shadow: inset 0 1px 0 rgba(255, 245, 232, 0.055);
+}
+
+.ssu-group-card-invites-block {
+  width: 100%;
+  text-align: left;
+}
+
+.ssu-group-mini-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ssu-group-mini-title-row h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.ssu-group-card-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.ssu-group-card-actions .ssu-main-action,
+.ssu-group-card-actions .ssu-danger-button {
+  width: 100%;
+  min-height: 50px;
+}
+
+.ssu-group-status-card {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 390px) {
+  .screen.ssu-group-polished-screen.ssu-group-compact-screen.ssu-group-centered-flow {
+    padding-top: 112px !important;
+    padding-bottom: 108px !important;
+  }
+
+  .ssu-group-single-card {
+    padding: 19px 15px 16px !important;
+  }
+
+  .ssu-group-create-only-card.ssu-group-single-card {
+    min-height: 310px;
+  }
+}
+
+/* Final mobile profile action layout + QR scroll safety */
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-social-actions {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 9px !important;
+}
+
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-social-actions .ssu-main-action,
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-social-actions .ssu-entry-action-button {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  padding-inline: 8px !important;
+  white-space: nowrap !important;
+  font-size: clamp(12px, 3.4vw, 14px) !important;
+}
+
+.screen.ssu-profile-screen.ssu-screen.ssu-account-profile-screen .ssu-profile-social-actions .ssu-entry-action-button.muted {
+  grid-column: 1 / -1 !important;
+}
+
+.screen.ssu-scan-screen.ssu-screen.ssu-centered-access-screen {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: calc(170px + var(--safe-bottom, 0px)) !important;
+  scroll-padding-bottom: calc(180px + var(--safe-bottom, 0px)) !important;
+}
+
+.ssu-scan-access-card {
+  flex-shrink: 0 !important;
+  margin-bottom: 82px !important;
+}
+
+@media (max-height: 760px) {
+  .screen.ssu-scan-screen.ssu-screen.ssu-centered-access-screen {
+    padding-bottom: calc(190px + var(--safe-bottom, 0px)) !important;
+  }
+}
